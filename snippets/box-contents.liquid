@@ -20,7 +20,7 @@
       {%- assign p = all_products[h] -%}
       {%- if p.id -%}
       {%- assign sum = sum | plus: p.price -%}
-      <li><a href="{{ p.url }}">{%- if p.featured_image -%}{{ p.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: p.title, width: 64, height: 80 }}{%- endif -%}<span><strong>{{ p.title | split: ' — ' | first }}</strong><small>{{ p.title | split: ' — ' | last }}</small></span><em>{{ p.price | money }}</em></a></li>
+      <li><a href="{{ p.url }}">{%- if p.featured_image -%}{{ p.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: p.title, width: 64, height: 80 }}{%- else -%}<img src="{{ 'padrao-' | append: ph | append: '.jpg' | asset_url }}" alt="" loading="lazy" width="64" height="80">{%- endif -%}<span><strong>{{ p.title | split: ' — ' | first }}</strong><small>{{ p.title | split: ' — ' | last }}</small></span><em>{{ p.price | money }}</em></a></li>
       {%- endif -%}
     {%- endfor -%}
     </ul>

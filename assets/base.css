@@ -368,3 +368,5 @@ th{font-weight:700;background:var(--bg)}
 .swatch input:focus-visible+.swatch__dot{outline:2px solid var(--accent);outline-offset:3px}
 .swatch__name{font-size:.85rem;font-weight:600;line-height:1.2}
 .swatch input:checked~.swatch__name{font-weight:800}
+.swatch__dot{background-size:260%}
+.box-items li span{min-width:0}
