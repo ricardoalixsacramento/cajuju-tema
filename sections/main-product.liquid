@@ -18,6 +18,24 @@
     {%- form 'product', product, id: 'product-form' -%}
       {%- if product.has_only_default_variant -%}
         <input type="hidden" name="id" value="{{ current.id }}">
+      {%- elsif product.options.size > 1 -%}
+      <input type="hidden" name="id" value="{{ current.id }}" data-variant-id>
+      <script type="application/json" data-variants>{{ product.variants | json }}</script>
+      {%- for option in product.options_with_values -%}
+        {%- assign oi = forloop.index0 -%}
+        {%- assign is_pat = false -%}{%- if option.name contains 'Padr' -%}{%- assign is_pat = true -%}{%- endif -%}
+        <fieldset class="sizes opt" data-opt-index="{{ oi }}">
+          <legend><span><span class="opt__step">{{ forloop.index }}</span> {% if is_pat %}Escolhe o padrão{% else %}Escolhe o tamanho{% endif %}: <strong data-opt-label="{{ oi }}">{{ option.selected_value }}</strong></span>{% if is_pat == false and section.settings.size_link != blank %}<a class="link" style="font-weight:600;font-size:.9rem" href="{{ section.settings.size_link }}">Guia de tamanhos</a>{% endif %}</legend>
+          <div class="sizes__list{% if is_pat %} swatches{% endif %}">
+          {%- for value in option.values -%}
+            <label class="{% if is_pat %}swatch{% else %}size{% endif %}"><input type="radio" name="opt-{{ oi }}" value="{{ value | escape }}" data-opt="{{ oi }}"{% if value == option.selected_value %} checked{% endif %}>
+              {%- if is_pat -%}<span class="swatch__dot" style="background-image:url('{{ 'padrao-' | append: value | handleize | append: '.jpg' | asset_url }}')"></span><span class="swatch__name">{{ value }}</span>{%- else -%}<span>{{ value }}</span>{%- endif -%}
+            </label>
+          {%- endfor -%}
+          </div>
+          {%- unless is_pat -%}<p class="hint">A oferecer? Se o bebé ainda não nasceu, escolhe 1–3M; se já nasceu, um tamanho acima da idade. As trocas de tamanho são grátis durante 30 dias.</p>{%- endunless -%}
+        </fieldset>
+      {%- endfor -%}
       {%- else -%}
       <fieldset class="sizes">
         <legend><span>{{ product.options.first }}: <span data-size-label>{{ current.title }}</span></span>{% if section.settings.size_link != blank %}<a class="link" style="font-weight:600;font-size:.9rem" href="{{ section.settings.size_link }}">Guia de tamanhos</a>{% endif %}</legend>
