@@ -1,2 +1,4 @@
-<section class="narrow" style="padding-top:56px;padding-bottom:64px"><h1 style="font-size:42px;margin-bottom:24px">{{ page.title }}</h1><div class="rte" style="line-height:1.7">{{ page.content }}</div></section>
+{%- unless page.handle == 'a-cajuju' or page.handle == 'contact' or page.handle == 'contactos' or page.template_suffix == 'sobre' or page.template_suffix == 'contact' -%}
+<section class="narrow" style="padding-top:clamp(28px,4vw,56px);padding-bottom:64px"><h1 style="font-size:var(--h1);margin-bottom:24px">{{ page.title }}</h1><div class="rte" style="line-height:1.7">{{ page.content }}</div></section>
+{%- endunless -%}
 {% schema %}{"name":"Página"}{% endschema %}

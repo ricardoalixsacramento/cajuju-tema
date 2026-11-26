@@ -1,9 +1,11 @@
+{%- if request.page_type != 'page' or page.handle == 'a-cajuju' or page.template_suffix == 'sobre' -%}
 <section class="narrow faq section">
   <h2>{{ section.settings.title }}</h2>
   <div class="acc">
     {%- for block in section.blocks -%}<details {{ block.shopify_attributes }}><summary>{{ block.settings.q }}</summary><div class="rte">{{ block.settings.a }}</div></details>{%- endfor -%}
   </div>
 </section>
+{%- endif -%}
 {% schema %}
 {"name":"Perguntas frequentes","settings":[{"type":"text","id":"title","label":"Título","default":"Perguntas frequentes"}],
 "blocks":[{"type":"qa","name":"Pergunta","settings":[{"type":"text","id":"q","label":"Pergunta"},{"type":"richtext","id":"a","label":"Resposta"}]}],

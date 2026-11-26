@@ -1,1 +1,98 @@
-{"sections":{"main":{"type":"main-page","settings":{}}},"order":["main"]}
+{
+ "sections": {
+  "main": {
+   "type": "main-page",
+   "settings": {}
+  },
+  "about": {
+   "type": "about",
+   "blocks": {
+    "b1": {
+     "type": "card",
+     "settings": {
+      "title": "Tecidos macios",
+      "text": "Gaze, canelado e interlock de algodão, escolhidos pelo toque suave na pele sensível do bebé."
+     }
+    },
+    "b2": {
+     "type": "card",
+     "settings": {
+      "title": "Feito em Portugal",
+      "text": "Cada peça é cortada e costurada em Portugal, perto de nós, por quem sabe fazer bem e com tempo."
+     }
+    },
+    "b3": {
+     "type": "card",
+     "settings": {
+      "title": "Pensado para o bebé",
+      "text": "Aberturas fáceis, elásticos suaves e costuras macias, porque vestir um bebé deve ser um momento tranquilo."
+     }
+    }
+   },
+   "block_order": [
+    "b1",
+    "b2",
+    "b3"
+   ],
+   "settings": {}
+  },
+  "faq": {
+   "type": "faq",
+   "blocks": {
+    "q1": {
+     "type": "qa",
+     "settings": {
+      "q": "Que tamanho escolher para oferecer?",
+      "a": "<p>Se o bebé ainda não nasceu, escolhe 1–3M. Se já nasceu, escolhe um tamanho acima da idade. E se não servir, a troca é grátis durante 30 dias.</p>"
+     }
+    },
+    "q2": {
+     "type": "qa",
+     "settings": {
+      "q": "Quanto tempo demora a entrega?",
+      "a": "<p>Entre 2 e 3 dias úteis em Portugal continental.</p>"
+     }
+    },
+    "q3": {
+     "type": "qa",
+     "settings": {
+      "q": "Quanto custam os portes?",
+      "a": "<p>São grátis a partir de 50 € e em todas as caixas de presente. Abaixo disso, custam 3,95 € em Portugal continental.</p>"
+     }
+    },
+    "q4": {
+     "type": "qa",
+     "settings": {
+      "q": "Posso enviar diretamente para a pessoa que vai receber?",
+      "a": "<p>Sim. Vai embrulhado, com o teu postal escrito à mão e sem preço à vista.</p>"
+     }
+    },
+    "q5": {
+     "type": "qa",
+     "settings": {
+      "q": "Como lavar?",
+      "a": "<p>Segue as instruções da etiqueta de cada peça.</p>"
+     }
+    }
+   },
+   "block_order": [
+    "q1",
+    "q2",
+    "q3",
+    "q4",
+    "q5"
+   ],
+   "settings": {}
+  },
+  "contact": {
+   "type": "contact-form",
+   "settings": {}
+  }
+ },
+ "order": [
+  "main",
+  "about",
+  "faq",
+  "contact"
+ ]
+}

@@ -1,3 +1,4 @@
+{%- if request.page_type != 'page' or page.handle == 'a-cajuju' or page.template_suffix == 'sobre' -%}
 <section class="narrow about-intro">
   <p class="eyebrow">{{ section.settings.eyebrow }}</p>
   <h1>{{ section.settings.title }}</h1>
@@ -14,6 +15,7 @@
 <section class="page-width section"><div class="cards3">
   {%- for block in section.blocks -%}<div class="info-card{% if forloop.last %} info-card--blue{% endif %}" {{ block.shopify_attributes }}><h2>{{ block.settings.title }}</h2><p>{{ block.settings.text }}</p></div>{%- endfor -%}
 </div></section>
+{%- endif -%}
 {% schema %}
 {"name":"Sobre nós","settings":[
 {"type":"text","id":"eyebrow","label":"Etiqueta","default":"Sobre nós"},
