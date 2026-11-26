@@ -80,7 +80,11 @@
    ],
    "settings": {}
   },
-  "related": {
+  "family": {
+   "type": "same-pattern",
+   "settings": {}
+  },
+  "gifts": {
    "type": "gift-boxes",
    "settings": {
     "eyebrow": "Para oferecer",
@@ -90,14 +94,18 @@
    "blocks": {},
    "block_order": []
   },
-  "family": {
-   "type": "same-pattern",
-   "settings": {}
+  "related": {
+   "type": "featured-collection",
+   "settings": {
+    "title": "Também vai gostar",
+    "limit": 4
+   }
   }
  },
  "order": [
   "main",
   "family",
+  "gifts",
   "guide",
   "related"
  ]
