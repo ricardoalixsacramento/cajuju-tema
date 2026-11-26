@@ -77,14 +77,14 @@ button,input,select,textarea{font:inherit;color:inherit}
 
 /* Hero */
 .hero{position:relative;overflow:hidden;background:var(--surface-2)}
-.hero__media img{width:100%;height:clamp(520px,78vh,780px);object-fit:cover;object-position:70% center}
+.hero__media img{width:100%;height:clamp(480px,44vw,820px);object-fit:cover;object-position:72% 18%}
 .hero__content{position:absolute;inset:0;display:flex;align-items:center}
 .hero__card{max-width:520px;display:flex;flex-direction:column;gap:18px}
 .hero__card h1{font-size:var(--h1)}
 .hero__card .sub{font-size:clamp(1rem,.95rem + .3vw,1.18rem);color:var(--soft);max-width:44ch}
 .hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
 @media(max-width:999px){
-  .hero__media img{height:clamp(340px,62vw,560px);object-position:72% center}
+  .hero__media img{height:clamp(320px,62vw,560px);object-position:72% 20%}
   .hero__content{position:static;background:var(--bg)}
   .hero__card{max-width:none;padding:32px 0 8px}
 }
