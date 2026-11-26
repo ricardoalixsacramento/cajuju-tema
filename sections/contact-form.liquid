@@ -1,0 +1,13 @@
+<section class="narrow" style="padding-top:clamp(28px,4vw,56px)">
+  <h1 style="font-size:var(--h1);margin-bottom:12px">{{ page.title }}</h1>
+  {%- if page.content != blank -%}<div class="rte muted" style="margin-bottom:24px">{{ page.content }}</div>{%- endif -%}
+  {%- form 'contact', class: 'form-stack', style: 'margin:0;max-width:560px' -%}
+    {%- if form.posted_successfully? -%}<p role="status" class="includes" style="list-style:none">Obrigado! Recebemos a tua mensagem e respondemos assim que possível.</p>{%- endif -%}
+    {%- if form.errors -%}<div class="errors">{{ form.errors | default_errors }}</div>{%- endif -%}
+    <label for="c-name" style="font-weight:600">Nome</label><input class="field field--box" id="c-name" name="contact[name]" autocomplete="name" value="{{ form.name }}">
+    <label for="c-email" style="font-weight:600">Email *</label><input class="field field--box" id="c-email" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email }}">
+    <label for="c-msg" style="font-weight:600">Mensagem *</label><textarea class="field field--box" id="c-msg" name="contact[body]" rows="6" required>{{ form.body }}</textarea>
+    <button class="btn btn--primary" type="submit">Enviar mensagem</button>
+  {%- endform -%}
+</section>
+{% schema %}{"name":"Formulário de contacto"}{% endschema %}

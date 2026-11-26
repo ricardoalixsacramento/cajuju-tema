@@ -1,3 +1,4 @@
+{%- unless product and product.has_only_default_variant -%}
 <section class="page-width section" id="guia">
   <div class="box">
     <h2>{{ section.settings.title }}</h2>
@@ -7,6 +8,7 @@
     {%- if section.settings.note != blank -%}<p class="muted" style="margin-top:14px;font-size:.9rem">{{ section.settings.note }}</p>{%- endif -%}
   </div>
 </section>
+{%- endunless -%}
 {% schema %}
 {"name":"Guia de tamanhos","settings":[{"type":"text","id":"title","label":"Título","default":"Guia de tamanhos"},{"type":"text","id":"note","label":"Nota","default":"Use a altura do bebé como referência principal. Se estiver entre dois tamanhos, escolha o maior."}],
 "blocks":[{"type":"row","name":"Tamanho","settings":[{"type":"text","id":"size","label":"Tamanho"},{"type":"text","id":"age","label":"Idade"},{"type":"text","id":"height","label":"Altura"},{"type":"text","id":"weight","label":"Peso"}]}],

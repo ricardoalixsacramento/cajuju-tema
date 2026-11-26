@@ -81,11 +81,14 @@
    "settings": {}
   },
   "related": {
-   "type": "featured-collection",
+   "type": "gift-boxes",
    "settings": {
-    "title": "Também vai gostar",
-    "limit": 4
-   }
+    "eyebrow": "Para oferecer",
+    "title": "Oferece numa caixa",
+    "text": "Peças do mesmo padrão numa caixa com papel de seda, postal escrito à mão e portes grátis."
+   },
+   "blocks": {},
+   "block_order": []
   },
   "family": {
    "type": "same-pattern",
