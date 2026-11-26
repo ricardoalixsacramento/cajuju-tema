@@ -1,0 +1,21 @@
+{%- assign coll = section.settings.collection -%}
+{%- if coll == blank -%}{%- assign coll = collections.all -%}{%- endif -%}
+<section class="wrap section">
+  <div class="section-head"><h2>{{ section.settings.title }}</h2><a class="link-u" href="{{ coll.url | default: routes.all_products_collection_url }}">Ver tudo</a></div>
+  <div class="grid-products">
+    {%- if coll.products_count > 0 -%}
+      {%- for product in coll.products limit: section.settings.limit -%}{%- render 'product-card', product: product -%}{%- endfor -%}
+    {%- else -%}
+      <a class="card" href="{{ routes.all_products_collection_url }}"><img class="card__img" src="{{ 'romper-packshot.jpg' | asset_url }}" alt="Romper de gola de folhos" loading="lazy" width="800" height="1000"><h3>Romper gola de folhos</h3><p class="price">—</p></a>
+      <a class="card" href="{{ routes.all_products_collection_url }}"><img class="card__img" src="{{ 'cenouras.jpg' | asset_url }}" alt="Body traçado com cenouras" loading="lazy" width="800" height="1000"><h3>Body traçado cenouras</h3><p class="price">—</p></a>
+      <a class="card" href="{{ routes.all_products_collection_url }}"><img class="card__img" src="{{ 'cerejas.jpg' | asset_url }}" alt="Conjunto canelado com cerejas" loading="lazy" width="800" height="1000"><h3>Conjunto canelado cerejas</h3><p class="price">—</p></a>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{"name":"Produtos em destaque","settings":[
+{"type":"text","id":"title","label":"Título","default":"Novidades"},
+{"type":"collection","id":"collection","label":"Coleção"},
+{"type":"range","id":"limit","label":"Nº de produtos","min":3,"max":12,"step":1,"default":3}],
+"presets":[{"name":"Produtos em destaque"}]}
+{% endschema %}

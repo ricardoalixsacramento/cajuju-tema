@@ -1,0 +1,50 @@
+{%- assign current = product.selected_or_first_available_variant -%}
+<section class="wrap product">
+  <div class="product__media">
+    {%- assign first = current.featured_media | default: product.featured_media -%}
+    {%- if first -%}<img class="product__main" data-main-img src="{{ first | image_url: width: 1400 }}" alt="{{ product.title | escape }}" width="1400" height="1750">{%- else -%}<div class="product__main"></div>{%- endif -%}
+    {%- if product.media.size > 1 -%}
+    <div class="thumbs">
+      {%- for media in product.media limit: 8 -%}
+      <button type="button" class="thumb{% if media.id == first.id %} is-active{% endif %}" data-thumb data-src="{{ media | image_url: width: 1400 }}" aria-label="Ver imagem {{ forloop.index }}">{{ media | image_url: width: 300 | image_tag: alt: '', loading: 'lazy' }}</button>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </div>
+  <div class="product__info">
+    <p class="crumbs"><a href="{{ routes.root_url }}">Início</a>{% if collection %} / <a href="{{ collection.url }}">{{ collection.title }}</a>{% endif %}</p>
+    <h1>{{ product.title }}</h1>
+    <p class="product__price" data-price>{{ current.price | money }}</p>
+    <div class="product__desc rte">{{ product.description }}</div>
+    {%- form 'product', product -%}
+      {%- if product.has_only_default_variant -%}
+        <input type="hidden" name="id" value="{{ current.id }}">
+      {%- else -%}
+      <fieldset class="sizes">
+        <legend><span>{{ product.options.first }}: <span data-size-label>{{ current.title }}</span></span>{% if section.settings.size_link != blank %}<a class="link-u" style="font-weight:600;border-width:1px" href="{{ section.settings.size_link }}">Guia de tamanhos</a>{% endif %}</legend>
+        {%- for variant in product.variants -%}
+        <label class="size"><input type="radio" name="id" value="{{ variant.id }}" data-variant data-title="{{ variant.title | escape }}" data-price="{{ variant.price | money | escape }}"{% if variant.id == current.id %} checked{% endif %}{% unless variant.available %} disabled{% endunless %}><span>{{ variant.title }}</span></label>
+        {%- endfor -%}
+      </fieldset>
+      {%- endif -%}
+      <div class="buy" style="margin-top:22px">
+        <div class="qty"><button type="button" data-qty="-1" aria-label="Menos">−</button><label class="vh" for="qty">Quantidade</label><input id="qty" type="number" name="quantity" value="1" min="1"><button type="button" data-qty="1" aria-label="Mais">+</button></div>
+        <button class="btn btn--primary" type="submit"{% unless product.available %} disabled{% endunless %}>{% if product.available %}Adicionar ao carrinho{% else %}Esgotado{% endif %}</button>
+      </div>
+    {%- endform -%}
+    <div class="badges"><div>{{ section.settings.badge1 }}</div><div>{{ section.settings.badge2 }}</div><div>{{ section.settings.badge3 }}</div></div>
+    <div class="acc">
+      {%- for block in section.blocks -%}
+      <details {{ block.shopify_attributes }}{% if forloop.first %} open{% endif %}><summary>{{ block.settings.heading }}</summary><div class="rte">{{ block.settings.content }}</div></details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{"name":"Produto","settings":[
+{"type":"text","id":"size_link","label":"Link do guia de tamanhos","default":"#guia"},
+{"type":"text","id":"badge1","label":"Selo 1","default":"Feito em Portugal"},
+{"type":"text","id":"badge2","label":"Selo 2","default":"Tamanhos 1–12 meses"},
+{"type":"text","id":"badge3","label":"Selo 3","default":"Trocas fáceis"}],
+"blocks":[{"type":"collapsible","name":"Separador","settings":[{"type":"text","id":"heading","label":"Título"},{"type":"richtext","id":"content","label":"Conteúdo"}]}]}
+{% endschema %}

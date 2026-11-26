@@ -1,0 +1,24 @@
+<header class="wrap header">
+  <nav class="header__nav" aria-label="Principal">
+    {%- assign menu = linklists[section.settings.menu] -%}
+    {%- if menu.links.size > 0 -%}
+      {%- for link in menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+    {%- else -%}
+      <a href="{{ routes.all_products_collection_url }}">Loja</a><a href="{{ routes.collections_url }}">Coleções</a>
+    {%- endif -%}
+  </nav>
+  <a class="header__logo" href="{{ routes.root_url }}">
+    {%- if section.settings.logo -%}{{ section.settings.logo | image_url: width: 300 | image_tag: alt: shop.name }}{%- else -%}{{ section.settings.logo_text | default: 'cajuju' }}{%- endif -%}
+  </a>
+  <div class="header__tools">
+    <a href="{{ routes.search_url }}">Procurar</a>
+    {%- if shop.customer_accounts_enabled -%}<a href="{{ routes.account_url }}">Conta</a>{%- endif -%}
+    <a class="pill-dark" href="{{ routes.cart_url }}">Carrinho ({{ cart.item_count }})</a>
+  </div>
+</header>
+{% schema %}
+{"name":"Cabeçalho","settings":[
+{"type":"link_list","id":"menu","label":"Menu","default":"main-menu"},
+{"type":"image_picker","id":"logo","label":"Logótipo (opcional)"},
+{"type":"text","id":"logo_text","label":"Logótipo em texto","default":"cajuju"}]}
+{% endschema %}

@@ -1,0 +1,26 @@
+<footer>
+  <div class="wrap footer">
+    <div class="footer__col"><span class="header__logo" style="font-size:28px">cajuju</span><span class="muted">{{ section.settings.tagline }}</span></div>
+    {%- for block in section.blocks -%}
+      {%- assign menu = linklists[block.settings.menu] -%}
+      <div class="footer__col" {{ block.shopify_attributes }}><strong>{{ block.settings.title }}</strong>
+        {%- for link in menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+      </div>
+    {%- endfor -%}
+    <div class="footer__col"><strong>Contactos</strong>
+      {%- if section.settings.email != blank -%}<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{%- endif -%}
+      <a href="{{ section.settings.instagram | default: 'https://instagram.com/cajujubaby' }}">Instagram</a>
+      <a href="https://www.livroreclamacoes.pt">Livro de Reclamações</a>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">© {{ 'now' | date: '%Y' }} {{ shop.name }}{% if section.settings.legal != blank %} · {{ section.settings.legal }}{% endif %}</div>
+</footer>
+{% schema %}
+{"name":"Rodapé","settings":[
+{"type":"text","id":"tagline","label":"Frase","default":"Roupa de bebé feita em Portugal."},
+{"type":"text","id":"email","label":"Email"},
+{"type":"url","id":"instagram","label":"Instagram"},
+{"type":"text","id":"legal","label":"Empresa · NIF"}],
+"blocks":[{"type":"menu","name":"Coluna de links","settings":[{"type":"text","id":"title","label":"Título","default":"Ajuda"},{"type":"link_list","id":"menu","label":"Menu","default":"footer"}]}],
+"max_blocks":3}
+{% endschema %}

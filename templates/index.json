@@ -1,0 +1,19 @@
+{"sections":{
+"hero":{"type":"hero","settings":{}},
+"values":{"type":"values","blocks":{
+"v1":{"type":"value","settings":{"icon":"leaf","title":"Tecidos macios","text":"Gaze, canelado e interlock, suaves na pele."}},
+"v2":{"type":"value","settings":{"icon":"home","title":"Feito em Portugal","text":"Produzido perto de nós, com cuidado."}},
+"v3":{"type":"value","settings":{"icon":"truck","title":"Envio rápido","text":"Enviamos para todo o Portugal."}},
+"v4":{"type":"value","settings":{"icon":"return","title":"Trocas fáceis","text":"Trocar de tamanho sem complicações."}}},
+"block_order":["v1","v2","v3","v4"],"settings":{}},
+"featured":{"type":"featured-collection","settings":{"title":"Novidades","limit":3}},
+"story":{"type":"story","settings":{}},
+"instagram":{"type":"instagram","blocks":{
+"p1":{"type":"photo","settings":{"fallback":"romper-detalhe.jpg"}},
+"p2":{"type":"photo","settings":{"fallback":"cenouras.jpg"}},
+"p3":{"type":"photo","settings":{"fallback":"romper-deitada.jpg"}},
+"p4":{"type":"photo","settings":{"fallback":"cerejas.jpg"}},
+"p5":{"type":"photo","settings":{"fallback":"romper-packshot.jpg"}}},
+"block_order":["p1","p2","p3","p4","p5"],"settings":{}},
+"newsletter":{"type":"newsletter","settings":{}}},
+"order":["hero","values","featured","story","instagram","newsletter"]}

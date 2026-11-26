@@ -1,0 +1,24 @@
+<section class="narrow" style="padding-top:48px;padding-bottom:64px">
+  <h1 style="font-size:42px;margin-bottom:16px">Carrinho</h1>
+  {%- if cart.item_count > 0 -%}
+  <form action="{{ routes.cart_url }}" method="post">
+    {%- for item in cart.items -%}
+    <div class="cart-row">
+      {%- if item.image -%}{{ item.image | image_url: width: 200 | image_tag: alt: item.title }}{%- else -%}<div></div>{%- endif -%}
+      <div><a href="{{ item.url }}" style="font-weight:700">{{ item.product.title }}</a>{% unless item.product.has_only_default_variant %}<div class="muted">{{ item.variant.title }}</div>{% endunless %}
+        <label class="vh" for="q{{ forloop.index }}">Quantidade</label><input class="select" style="width:80px;margin-top:8px" id="q{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+        <a href="{{ item.url_to_remove }}" class="muted" style="margin-left:12px;font-size:14px">Remover</a></div>
+      <strong>{{ item.final_line_price | money }}</strong>
+    </div>
+    {%- endfor -%}
+    <div class="cart-total">
+      <p style="margin:0;font-size:20px;font-weight:700">Subtotal: {{ cart.total_price | money }}</p>
+      <p class="muted" style="margin:0;font-size:14px">Portes e descontos calculados no checkout.</p>
+      <div class="row"><button class="btn btn--light" type="submit" name="update">Atualizar</button><button class="btn btn--primary" type="submit" name="checkout">Finalizar compra</button></div>
+    </div>
+  </form>
+  {%- else -%}
+  <p class="muted">O seu carrinho está vazio.</p><a class="btn btn--primary" href="{{ routes.all_products_collection_url }}">Ver coleção</a>
+  {%- endif -%}
+</section>
+{% schema %}{"name":"Carrinho"}{% endschema %}

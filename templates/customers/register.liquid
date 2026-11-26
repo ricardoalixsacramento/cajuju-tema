@@ -1,0 +1,7 @@
+<section class="narrow" style="padding:56px 32px 64px"><h1 style="font-size:40px;text-align:center;margin-bottom:24px">Criar conta</h1>
+{%- form 'create_customer', class: 'form-stack' -%}<div class="errors">{{ form.errors | default_errors }}</div>
+<label for="rf">Nome</label><input class="field" id="rf" type="text" name="customer[first_name]" autocomplete="given-name">
+<label for="rl">Apelido</label><input class="field" id="rl" type="text" name="customer[last_name]" autocomplete="family-name">
+<label for="re">Email</label><input class="field" id="re" type="email" name="customer[email]" autocomplete="email" required>
+<label for="rp">Palavra-passe</label><input class="field" id="rp" type="password" name="customer[password]" autocomplete="new-password" required>
+<button class="btn btn--dark" type="submit">Criar conta</button>{%- endform -%}</section>

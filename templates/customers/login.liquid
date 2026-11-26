@@ -1,0 +1,6 @@
+<section class="narrow" style="padding:56px 32px 64px"><h1 style="font-size:40px;text-align:center;margin-bottom:24px">Entrar</h1>
+{%- form 'customer_login', class: 'form-stack' -%}<div class="errors">{{ form.errors | default_errors }}</div>
+<label for="le">Email</label><input class="field" id="le" type="email" name="customer[email]" autocomplete="email" required>
+<label for="lp">Palavra-passe</label><input class="field" id="lp" type="password" name="customer[password]" autocomplete="current-password" required>
+<button class="btn btn--dark" type="submit">Entrar</button><a href="{{ routes.account_register_url }}">Criar conta</a><a href="#recover">Esqueceu-se da palavra-passe?</a>{%- endform -%}
+<div id="recover" style="margin-top:40px">{%- form 'recover_customer_password', class: 'form-stack' -%}<h2 style="font-size:22px">Recuperar palavra-passe</h2>{% if form.posted_successfully? %}<p>Enviámos um email com instruções.</p>{% endif %}<label for="re">Email</label><input class="field" id="re" type="email" name="email" required><button class="btn btn--light" type="submit">Enviar</button>{%- endform -%}</div></section>

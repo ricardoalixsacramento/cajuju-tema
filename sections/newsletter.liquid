@@ -1,0 +1,19 @@
+<section class="wrap section">
+  <div class="newsletter">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.text }}</p>
+    {%- form 'customer', id: 'newsletter' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      {%- if form.posted_successfully? -%}<p role="status" style="width:100%">Obrigado! Já faz parte da família Cajuju.</p>{%- endif -%}
+      <label class="vh" for="nl-email">Email</label>
+      <input class="field" id="nl-email" type="email" name="contact[email]" placeholder="O seu email" required autocomplete="email">
+      <button class="btn btn--dark" type="submit">Subscrever</button>
+    {%- endform -%}
+  </div>
+</section>
+{% schema %}
+{"name":"Newsletter","settings":[
+{"type":"text","id":"title","label":"Título","default":"Junte-se à família Cajuju"},
+{"type":"textarea","id":"text","label":"Texto","default":"Receba as novidades e os lançamentos antes de todos."}],
+"presets":[{"name":"Newsletter"}]}
+{% endschema %}

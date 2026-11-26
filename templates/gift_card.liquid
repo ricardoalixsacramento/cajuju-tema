@@ -1,0 +1,5 @@
+{% layout none %}
+<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cartão-oferta · {{ shop.name }}</title>{{ 'base.css' | asset_url | stylesheet_tag }}{{ content_for_header }}</head>
+<body><main class="narrow about-intro"><span class="header__logo">cajuju</span><h1>Cartão-oferta de {{ gift_card.initial_value | money }}</h1>
+<p class="lead">Código: <strong>{{ gift_card.code | format_code }}</strong></p>{% if gift_card.expired %}<p>Este cartão expirou.</p>{% endif %}
+<p class="lead">Saldo: {{ gift_card.balance | money }}</p><a class="btn btn--primary" href="{{ shop.url }}">Ir para a loja</a></main></body></html>

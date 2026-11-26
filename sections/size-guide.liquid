@@ -1,0 +1,14 @@
+<section class="wrap" id="guia" style="padding-bottom:56px">
+  <div class="box">
+    <h2>{{ section.settings.title }}</h2>
+    <table><thead><tr><th>Tamanho</th><th>Idade</th><th>Altura (cm)</th><th>Peso (kg)</th></tr></thead><tbody>
+    {%- for block in section.blocks -%}<tr {{ block.shopify_attributes }}><td>{{ block.settings.size }}</td><td>{{ block.settings.age }}</td><td>{{ block.settings.height }}</td><td>{{ block.settings.weight }}</td></tr>{%- endfor -%}
+    </tbody></table>
+    {%- if section.settings.note != blank -%}<p class="muted" style="margin:14px 0 0;font-size:13px">{{ section.settings.note }}</p>{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{"name":"Guia de tamanhos","settings":[{"type":"text","id":"title","label":"Título","default":"Guia de tamanhos"},{"type":"text","id":"note","label":"Nota","default":"Se estiver entre dois tamanhos, escolha o maior."}],
+"blocks":[{"type":"row","name":"Tamanho","settings":[{"type":"text","id":"size","label":"Tamanho"},{"type":"text","id":"age","label":"Idade"},{"type":"text","id":"height","label":"Altura"},{"type":"text","id":"weight","label":"Peso"}]}],
+"presets":[{"name":"Guia de tamanhos"}]}
+{% endschema %}

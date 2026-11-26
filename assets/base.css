@@ -1,0 +1,117 @@
+:root{--bg:#F7F2EA;--sand:#EFE5D9;--beige:#E3D1C1;--line:#E3D1C1;--text:#4A3F3A;--muted:#6E5E57;--soft:#5E514B;--btn:#8A5A3C;--blue:#DCE3EC;--blue-text:#4F5866;--dash:#C9B6A6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:'Nunito Sans',system-ui,sans-serif;color:var(--text);font-size:16px;line-height:1.5}
+a{color:var(--text);text-decoration:none}a:hover{color:var(--btn)}
+h1,h2,h3{font-family:'Nunito',system-ui,sans-serif;margin:0;font-weight:800}
+img{max-width:100%;display:block}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:#fff;padding:8px 12px;z-index:9}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.narrow{max-width:880px;margin:0 auto;padding:0 32px}
+.eyebrow{margin:0;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7A5A44}
+.muted{color:var(--muted)}
+.btn{display:inline-block;border:0;border-radius:999px;padding:16px 28px;font:700 16px 'Nunito Sans',sans-serif;cursor:pointer;text-align:center}
+.btn--primary{background:var(--btn);color:#fff}.btn--primary:hover{background:#74492F;color:#fff}
+.btn--dark{background:var(--text);color:var(--bg)}.btn--dark:hover{background:#2f2825;color:var(--bg)}
+.btn--light{background:#fff;color:var(--text)}
+.link-u{font-weight:700;border-bottom:2px solid var(--btn);padding-bottom:2px}
+.announcement{background:var(--text);color:var(--bg);text-align:center;font-size:14px;padding:10px 16px;font-weight:600}
+.announcement a{color:var(--bg)}
+.header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:20px;padding-bottom:20px}
+.header__nav{display:flex;flex-wrap:wrap;gap:28px;font-size:15px;font-weight:600}
+.header__logo{font-family:'Nunito',sans-serif;font-weight:800;font-size:34px;letter-spacing:.5px}
+.header__logo img{max-height:56px;width:auto}
+.header__tools{display:flex;gap:20px;align-items:center;font-size:15px;font-weight:600}
+.pill-dark{background:var(--text);color:var(--bg)!important;padding:10px 18px;border-radius:999px}
+.hero{padding:0 32px;max-width:1376px;margin:0 auto}
+.hero__box{position:relative;border-radius:28px;overflow:hidden;background:#E5D9D0}
+.hero__img{width:100%;height:620px;object-fit:cover;object-position:right center}
+.hero__text{position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:48px;max-width:480px}
+.hero__text h1{font-size:54px;line-height:1.05}
+.hero__text p.sub{margin:0;font-size:18px;line-height:1.6;color:var(--soft)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+@media(max-width:1099px){.hero__img{height:460px;object-position:70% center}.hero__text{position:static;max-width:none;padding:32px}.hero__text h1{font-size:40px}}
+@media(max-width:749px){.hero__img{height:380px}.hero__text{padding:24px}.hero__text h1{font-size:34px}.wrap,.narrow{padding:0 20px}.header{justify-content:center}}
+.values{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding-top:40px;padding-bottom:40px}
+.value{background:var(--sand);border-radius:20px;padding:24px;display:flex;gap:14px;align-items:center}
+.value h3{font-size:17px}.value p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.section{padding-top:40px;padding-bottom:40px}
+.section-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:28px}
+.section-head h2{font-size:38px}
+.grid-products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:32px 24px}
+.card{display:flex;flex-direction:column;gap:10px}
+.card__img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:20px;background:var(--beige)}
+.card h3{font-size:17px;font-weight:700}.card .price{margin:0;font-weight:600;color:var(--muted)}
+.card .compare{text-decoration:line-through;margin-left:6px;font-weight:400}
+.story{display:flex;flex-wrap:wrap;background:var(--sand);border-radius:28px;overflow:hidden}
+.story__img{flex:1 1 420px;min-width:0;height:520px;object-fit:cover}
+.story__text{flex:1 1 420px;min-width:0;padding:56px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.story__text h2{font-size:38px;line-height:1.15}.story__text p{margin:0;font-size:17px;line-height:1.7;color:var(--soft)}
+@media(max-width:749px){.story__img{height:360px}.story__text{padding:28px}}
+.insta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.insta img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px}
+.newsletter{background:var(--blue);border-radius:28px;padding:56px 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}
+.newsletter h2{font-size:34px}.newsletter p{margin:0;max-width:520px;color:var(--blue-text)}
+.newsletter form{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;width:100%;max-width:520px}
+.field{flex:1 1 260px;min-width:0;padding:15px 20px;border-radius:999px;border:1px solid #B9C3D0;font:16px 'Nunito Sans',sans-serif;background:#fff;color:var(--text)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.footer{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;font-size:15px;padding-top:56px;padding-bottom:40px}
+.footer__col{display:flex;flex-direction:column;gap:10px}
+.footer__bottom{border-top:1px solid var(--line);padding-top:16px;padding-bottom:32px;font-size:13px;color:var(--muted)}
+.page-head{padding-top:48px;padding-bottom:24px;display:flex;flex-direction:column;gap:12px}
+.page-head h1{font-size:46px}.page-head .desc{max-width:640px;font-size:17px;line-height:1.6;color:var(--soft)}
+.crumbs{margin:0;font-size:14px;color:var(--muted)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding-bottom:24px}
+.chip{background:var(--sand);color:var(--text);padding:10px 20px;border-radius:999px;font-weight:600;font-size:15px}
+.chip.is-active{background:var(--text);color:var(--bg)}
+.select{padding:10px 14px;border-radius:12px;border:1px solid #D8C6B6;background:#fff;font:600 15px 'Nunito Sans',sans-serif;color:var(--text)}
+.pagination{display:flex;gap:12px;justify-content:center;padding:32px 0;font-weight:700}
+.product{display:flex;flex-wrap:wrap;gap:56px;padding-top:32px;padding-bottom:56px}
+.product__media{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.product__main{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:24px;background:var(--beige)}
+.thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.thumb{padding:0;border-radius:14px;overflow:hidden;cursor:pointer;background:none;border:2px solid transparent}
+.thumb.is-active{border-color:var(--btn)}.thumb img{width:100%;aspect-ratio:1;object-fit:cover}
+.product__info{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:22px}
+.product__info h1{font-size:40px;line-height:1.1}
+.product__price{margin:0;font-size:24px;font-weight:700}
+.product__desc{font-size:17px;line-height:1.65;color:var(--soft)}
+.sizes{display:flex;flex-wrap:wrap;gap:10px;border:0;padding:0;margin:0}
+.sizes legend{font-weight:700;margin-bottom:10px;display:flex;justify-content:space-between;width:100%}
+.size input{position:absolute;opacity:0}
+.size span{display:inline-flex;align-items:center;justify-content:center;min-width:76px;height:46px;padding:0 14px;border-radius:999px;font-weight:600;font-size:15px;background:#fff;border:1px solid #D8C6B6;cursor:pointer}
+.size input:checked+span{background:var(--text);color:var(--bg);border-color:var(--text)}
+.size input:disabled+span{opacity:.45;text-decoration:line-through}
+.size input:focus-visible+span{outline:2px solid var(--btn);outline-offset:2px}
+.qty{display:flex;align-items:center;border:1px solid #D8C6B6;border-radius:999px;background:#fff}
+.qty button{width:48px;height:52px;border:0;background:none;font-size:20px;color:var(--text);cursor:pointer}
+.qty input{width:40px;text-align:center;border:0;font:700 16px 'Nunito Sans',sans-serif;color:var(--text);background:none}
+.buy{display:flex;flex-wrap:wrap;gap:12px}.buy .btn{flex:1 1 220px}
+.badges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:13px;font-weight:600;text-align:center}
+.badges div{background:var(--sand);border-radius:14px;padding:12px}
+.acc{border-top:1px solid var(--line)}
+.acc details{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none;display:flex;justify-content:space-between;padding:18px 0;font:700 16px 'Nunito',sans-serif;cursor:pointer}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:'+'}.acc details[open] summary::after{content:'−'}
+.acc .rte{margin:0 0 18px;line-height:1.6;color:var(--soft)}
+.box{background:#fff;border-radius:24px;padding:36px;overflow-x:auto}
+.box h2{font-size:28px;margin-bottom:16px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
+td,th{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
+.about-intro{padding-top:72px;padding-bottom:40px;text-align:center;display:flex;flex-direction:column;gap:18px;align-items:center}
+.about-intro h1{font-size:50px;line-height:1.1}.about-intro p.lead{margin:0;font-size:19px;line-height:1.65;color:var(--soft)}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.three img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:24px}
+.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.info-card{background:var(--sand);border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:10px}
+.info-card--blue{background:var(--blue)}.info-card h2{font-size:22px}.info-card p{margin:0;line-height:1.6;color:var(--soft)}
+.faq h2{font-size:36px;margin-bottom:20px;text-align:center}
+.faq .acc{background:#fff;border-radius:24px;padding:8px 32px;border:0}
+.faq details:last-child{border-bottom:0}
+.cart-row{display:grid;grid-template-columns:96px 1fr auto;gap:20px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.cart-row img{width:96px;aspect-ratio:4/5;object-fit:cover;border-radius:12px}
+.cart-total{display:flex;flex-direction:column;align-items:flex-end;gap:14px;padding:28px 0}
+.form-stack{display:flex;flex-direction:column;gap:14px;max-width:420px;margin:0 auto}
+.form-stack .field{border-radius:14px}
+.errors{color:#9B2C2C}
+.rte p{margin:0 0 12px}

@@ -1,0 +1,30 @@
+<section class="wrap page-head">
+  <p class="crumbs"><a href="{{ routes.root_url }}">Início</a> / {{ collection.title }}</p>
+  <h1>{{ collection.title }}</h1>
+  {%- if collection.description != blank -%}<div class="desc">{{ collection.description }}</div>{%- elsif section.settings.fallback != blank -%}<p class="desc" style="margin:0">{{ section.settings.fallback }}</p>{%- endif -%}
+</section>
+<div class="wrap toolbar">
+  <div class="row">
+    <a class="chip{% if collection.handle == 'all' %} is-active{% endif %}" href="{{ routes.all_products_collection_url }}">Tudo</a>
+    {%- assign menu = linklists[section.settings.menu] -%}
+    {%- for link in menu.links -%}<a class="chip{% if link.active %} is-active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+  </div>
+  <label style="display:flex;gap:8px;align-items:center;font-weight:600">Ordenar
+    <select class="select" data-sort>
+      {%- for opt in collection.sort_options -%}<option value="{{ opt.value }}"{% if opt.value == collection.sort_by %} selected{% endif %}>{{ opt.name }}</option>{%- endfor -%}
+    </select>
+  </label>
+</div>
+{%- paginate collection.products by 24 -%}
+<section class="wrap" style="padding-bottom:64px">
+  <div class="grid-products">
+    {%- for product in collection.products -%}{%- render 'product-card', product: product -%}{%- else -%}<p>Ainda não há produtos nesta coleção.</p>{%- endfor -%}
+  </div>
+  {%- if paginate.pages > 1 -%}<nav class="pagination" aria-label="Páginas">{%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">← Anterior</a>{%- endif -%}<span>{{ paginate.current_page }} / {{ paginate.pages }}</span>{%- if paginate.next -%}<a href="{{ paginate.next.url }}">Seguinte →</a>{%- endif -%}</nav>{%- endif -%}
+</section>
+{%- endpaginate -%}
+{% schema %}
+{"name":"Coleção","settings":[
+{"type":"link_list","id":"menu","label":"Filtros rápidos (menu)"},
+{"type":"textarea","id":"fallback","label":"Descrição se a coleção não tiver","default":"Bodies, rompers e conjuntos para os primeiros meses: macios, fáceis de vestir e em tons que combinam todos entre si."}]}
+{% endschema %}

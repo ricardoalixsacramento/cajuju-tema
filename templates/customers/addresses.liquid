@@ -1,0 +1,6 @@
+<section class="narrow" style="padding:56px 32px 64px"><h1 style="font-size:36px;margin-bottom:16px">Moradas</h1>
+{%- for address in customer.addresses -%}<div style="padding:16px 0;border-bottom:1px solid var(--line)">{{ address | format_address }}</div>{%- endfor -%}
+<h2 style="font-size:22px;margin:28px 0 12px">Nova morada</h2>
+{%- form 'customer_address', customer.new_address, class: 'form-stack' -%}
+<label for="a1">Nome</label><input class="field" id="a1" name="address[first_name]"><label for="a2">Morada</label><input class="field" id="a2" name="address[address1]"><label for="a3">Código postal</label><input class="field" id="a3" name="address[zip]"><label for="a4">Localidade</label><input class="field" id="a4" name="address[city]"><input type="hidden" name="address[country]" value="Portugal"><button class="btn btn--dark" type="submit">Guardar</button>
+{%- endform -%}<p><a href="{{ routes.account_url }}">← Voltar à conta</a></p></section>

@@ -1,0 +1,7 @@
+<a class="card" href="{{ product.url }}">
+  {%- if product.featured_media -%}
+    {{ product.featured_media | image_url: width: 800 | image_tag: class: 'card__img', loading: 'lazy', widths: '400,600,800', alt: product.title }}
+  {%- else -%}<div class="card__img"></div>{%- endif -%}
+  <h3>{{ product.title }}</h3>
+  <p class="price">{% if product.price_varies %}Desde {% endif %}{{ product.price | money }}{% if product.compare_at_price > product.price %}<span class="compare">{{ product.compare_at_price | money }}</span>{% endif %}</p>
+</a>
