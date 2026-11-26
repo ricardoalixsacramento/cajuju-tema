@@ -1,6 +1,6 @@
 <footer class="site-footer">
   <div class="page-width footer">
-    <div class="footer__brand"><span class="header__logo" style="font-size:1.8rem">cajuju</span><p>{{ section.settings.tagline }}</p>
+    <div class="footer__brand"><span class="header__logo header__logo--footer"><img src="{{ 'logo-cajuju.png' | asset_url }}" alt="Cajuju" width="1200" height="423" class="logo-img"></span><p>{{ section.settings.tagline }}</p>
       <a class="footer__ig" href="{{ section.settings.instagram | default: 'https://instagram.com/cajujubaby' }}" target="_blank" rel="noopener">@cajujubaby no Instagram</a>
     </div>
     {%- if section.settings.store_menus and section.blocks.size > 0 -%}

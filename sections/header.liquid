@@ -8,8 +8,8 @@
         {%- render 'nav-links', menu: menu, use_plan: use_plan -%}
       </nav>
     </div>
-    <a class="header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }} — início">
-      {%- if section.settings.logo -%}{{ section.settings.logo | image_url: width: 400 | image_tag: alt: shop.name, widths: '200,400' }}{%- else -%}{{ section.settings.logo_text | default: 'cajuju' }}{%- endif -%}
+    <a class="header__logo" href="{{ routes.root_url }}" aria-label="Cajuju — início">
+      {%- if section.settings.logo -%}{{ section.settings.logo | image_url: width: 400 | image_tag: alt: shop.name, widths: '200,400' }}{%- else -%}<img src="{{ 'logo-cajuju.png' | asset_url }}" alt="Cajuju" width="1200" height="423" class="logo-img">{%- endif -%}
     </a>
     <div class="header__tools">
       <a class="icon-btn" href="{{ routes.search_url }}" aria-label="Procurar">{% render 'icon', name: 'search' %}</a>
@@ -21,7 +21,7 @@
 <div class="drawer" id="menu-drawer" data-drawer aria-hidden="true">
   <div class="drawer__overlay" data-drawer-close></div>
   <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
-    <div class="drawer__head"><span class="header__logo" style="font-size:1.6rem">cajuju</span><button type="button" class="icon-btn" data-drawer-close aria-label="Fechar menu">{% render 'icon', name: 'close' %}</button></div>
+    <div class="drawer__head"><span class="header__logo header__logo--drawer"><img src="{{ 'logo-cajuju.png' | asset_url }}" alt="Cajuju" width="1200" height="423" class="logo-img"></span><button type="button" class="icon-btn" data-drawer-close aria-label="Fechar menu">{% render 'icon', name: 'close' %}</button></div>
     <nav aria-label="Menu móvel">
       {%- render 'nav-links', menu: menu, use_plan: use_plan -%}
       {%- if shop.customer_accounts_enabled -%}<a href="{{ routes.account_url }}">A minha conta</a>{%- endif -%}

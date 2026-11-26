@@ -346,3 +346,8 @@ th{font-weight:700;background:var(--bg)}
 .toast a{color:var(--bg);font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .toast img{width:44px;height:55px;object-fit:cover;border-radius:8px}
 .btn.is-loading{opacity:.7;pointer-events:none}
+
+.logo-img{display:block;height:clamp(30px,1.6rem + .9vw,44px);width:auto}
+.header__logo--drawer .logo-img{height:32px}
+.header__logo--footer{justify-self:start}
+.header__logo--footer .logo-img{height:46px}
