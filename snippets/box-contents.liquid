@@ -1,0 +1,32 @@
+{%- comment -%} Peças incluídas numa caixa presente, por padrão, com ligação e poupança. {%- endcomment -%}
+{%- case product.handle -%}
+  {%- when 'caixa-pes-quentinhos' -%}{%- assign models = 'kaifoot,botieboos' | split: ',' -%}
+  {%- when 'caixa-dupla-abraco' -%}{%- assign models = 'hug-me,botieboos' | split: ',' -%}
+  {%- when 'caixa-primeiro-abraco' -%}{%- assign models = 'hug-me,botieboos,wendy' | split: ',' -%}
+  {%- when 'caixa-verao-juca' -%}{%- assign models = 'juca,wendy,botieboos' | split: ',' -%}
+  {%- else -%}{%- assign models = '' | split: ',' -%}
+{%- endcase -%}
+{%- if models.size > 0 -%}
+{%- assign cur_pat = current.option1 -%}
+{%- for pat in product.options_with_values.first.values -%}
+  {%- assign ph = pat | handleize -%}
+  {%- assign sum = 0 -%}{%- assign price = 0 -%}
+  {%- for v in product.variants -%}{%- if v.option1 == pat -%}{%- assign price = v.price -%}{%- break -%}{%- endif -%}{%- endfor -%}
+  <div class="box-items" data-box-pattern="{{ pat | escape }}"{% unless pat == cur_pat %} hidden{% endunless %}>
+    <p class="box-items__title">Vem nesta caixa · padrão {{ pat }}</p>
+    <ul>
+    {%- for m in models -%}
+      {%- assign h = m | append: '-' | append: ph -%}
+      {%- assign p = all_products[h] -%}
+      {%- if p.id -%}
+      {%- assign sum = sum | plus: p.price -%}
+      <li><a href="{{ p.url }}">{%- if p.featured_image -%}{{ p.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: p.title, width: 64, height: 80 }}{%- endif -%}<span><strong>{{ p.title | split: ' — ' | first }}</strong><small>{{ p.title | split: ' — ' | last }}</small></span><em>{{ p.price | money }}</em></a></li>
+      {%- endif -%}
+    {%- endfor -%}
+    </ul>
+    {%- if sum > price -%}
+    <p class="box-items__save"><span>Em separado <s>{{ sum | money }}</s></span><span>Na caixa <strong>{{ price | money }}</strong></span><span class="box-items__badge">Poupas {{ sum | minus: price | money }}</span></p>
+    {%- endif -%}
+  </div>
+{%- endfor -%}
+{%- endif -%}

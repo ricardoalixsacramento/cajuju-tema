@@ -15,6 +15,10 @@
     if(e.target.matches('[data-variant]')){
       document.querySelectorAll('[data-price]').forEach(function(p){if(e.target.dataset.price)p.textContent=e.target.dataset.price});
       var l=document.querySelector('[data-size-label]');if(l)l.textContent=e.target.dataset.title;
+      var pat=(e.target.dataset.title||'').split(' / ')[0];
+      document.querySelectorAll('[data-box-pattern]').forEach(function(b){b.hidden=b.dataset.boxPattern!==pat});
+      var gal=document.querySelector('[data-gallery]');
+      if(gal&&pat){var hit=[].find.call(gal.querySelectorAll('.gallery__item'),function(it){var im=it.querySelector('img');return im&&im.alt.indexOf(pat)>-1});if(hit&&hit!==gal.firstElementChild){gal.insertBefore(hit,gal.firstElementChild);gal.scrollLeft=0;}}
       var u2=new URL(location.href);u2.searchParams.set('variant',e.target.value);history.replaceState(null,'',u2.toString());
     }
   });

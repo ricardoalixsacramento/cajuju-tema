@@ -29,6 +29,7 @@
         <p class="hint">A oferecer? Se o bebé ainda não nasceu, escolhe 1–3M; se já nasceu, um tamanho acima da idade. As trocas de tamanho são grátis durante 30 dias.</p>
       </fieldset>
       {%- endif -%}
+      {%- if product.tags contains 'presentes' -%}{%- render 'box-contents', product: product, current: current -%}{%- endif -%}
       {%- if product.tags contains 'presentes' -%}
       <div class="gift-note">
         <label for="gift-msg"><strong>Mensagem para o postal</strong> <span class="muted">(opcional, escrita à mão por nós)</span></label>
