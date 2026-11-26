@@ -1,0 +1,14 @@
+{%- comment -%} Devolve a maior poupança (em cêntimos) de uma caixa face às peças em separado. {%- endcomment -%}
+{%- case product.handle -%}
+  {%- when 'caixa-pes-quentinhos' -%}{%- assign models = 'kaifoot,botieboos' | split: ',' -%}
+  {%- when 'caixa-dupla-abraco' -%}{%- assign models = 'hug-me,botieboos' | split: ',' -%}
+  {%- when 'caixa-primeiro-abraco' -%}{%- assign models = 'hug-me,botieboos,wendy' | split: ',' -%}
+  {%- when 'caixa-verao-juca' -%}{%- assign models = 'juca,wendy,botieboos' | split: ',' -%}
+  {%- else -%}{%- assign models = '' | split: ',' -%}
+{%- endcase -%}
+{%- assign best = 0 -%}
+{%- if models.size > 0 -%}{%- for pat in product.options_with_values.first.values -%}
+  {%- assign ph = pat | handleize -%}{%- assign sum = 0 -%}
+  {%- for m in models -%}{%- assign h = m | append: '-' | append: ph -%}{%- assign p = all_products[h] -%}{%- if p.id -%}{%- assign sum = sum | plus: p.price -%}{%- endif -%}{%- endfor -%}
+  {%- assign sv = sum | minus: product.price -%}{%- if sv > best -%}{%- assign best = sv -%}{%- endif -%}
+{%- endfor -%}{%- endif -%}{{ best }}

@@ -6,6 +6,32 @@
   <title>{{ page_title }}{% unless page_title contains shop.name %} · {{ shop.name }}{% endunless %}</title>
   {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
   <link rel="canonical" href="{{ canonical_url }}">
+  {%- liquid
+    assign og_type = 'website'
+    assign og_image = 'hero.jpg' | asset_url
+    if request.page_type == 'product'
+      assign og_type = 'product'
+      if product.featured_image
+        assign og_image = product.featured_image | image_url: width: 1200
+      endif
+    endif
+  -%}
+  <meta property="og:site_name" content="Cajuju">
+  <meta property="og:type" content="{{ og_type }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  {% if page_description %}<meta property="og:description" content="{{ page_description | escape }}">{% endif %}
+  <meta property="og:image" content="https:{{ og_image | remove: 'https:' }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {%- if request.page_type == 'product' -%}
+  <meta property="product:price:amount" content="{{ product.price | money_without_currency | replace: ',', '.' }}">
+  <meta property="product:price:currency" content="{{ cart.currency.iso_code }}">
+  <script type="application/ld+json">{{ product | structured_data }}</script>
+  {%- endif -%}
+  {%- if request.page_type == 'index' -%}
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Cajuju","url":{{ shop.url | json }},"logo":{{ 'hero.jpg' | asset_url | prepend: 'https:' | json }}}</script>
+  {%- endif -%}
+  {%- if request.page_type == 'index' -%}<link rel="preload" as="image" href="{{ 'hero.jpg' | asset_url }}" fetchpriority="high">{%- endif -%}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">

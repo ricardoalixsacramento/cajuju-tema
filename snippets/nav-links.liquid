@@ -1,11 +1,27 @@
 {%- if use_plan -%}
+  {%- assign pats = 'Pássaros,Dente-de-leão,Mirtilos,Cenouras,Limões,Cogumelos' | split: ',' -%}
   <a href="/collections/all/presentes"{% if request.path contains '/presentes' %} aria-current="page"{% endif %}>Presentes</a>
-  <a href="/#padroes">Padrões</a>
-  <a href="{{ routes.all_products_collection_url }}"{% if request.path == '/collections/all' %} aria-current="page"{% endif %}>Peças</a>
+  <div class="nav-item">
+    <a href="/#padroes" aria-haspopup="true">Padrões</a>
+    <div class="nav-sub">
+      {%- for p in pats -%}{%- assign ph = p | handleize -%}<a href="/collections/all/{{ ph }}"{% if request.path contains ph %} aria-current="page"{% endif %}><span class="nav-sub__dot" style="background-image:url('{{ 'padrao-' | append: ph | append: '.jpg' | asset_url }}')"></span>{{ p }}</a>{%- endfor -%}
+    </div>
+  </div>
+  <div class="nav-item">
+    <a href="{{ routes.all_products_collection_url }}" aria-haspopup="true"{% if request.path == '/collections/all' %} aria-current="page"{% endif %}>Peças</a>
+    <div class="nav-sub">
+      <a href="{{ routes.all_products_collection_url }}">Todas as peças</a>
+      {%- assign cols = 'bodies,babygrows,conjuntos,acessorios' | split: ',' -%}{%- for h in cols -%}{%- assign c = collections[h] -%}{%- if c.id -%}<a href="{{ c.url }}"{% if request.path contains c.url %} aria-current="page"{% endif %}>{{ c.title }}</a>{%- endif -%}{%- endfor -%}
+    </div>
+  </div>
   <a href="/pages/guia-de-tamanhos"{% if request.path contains 'guia-de-tamanhos' %} aria-current="page"{% endif %}>Guia de tamanhos</a>
   <a href="/pages/a-cajuju"{% if request.path contains 'a-cajuju' %} aria-current="page"{% endif %}>Sobre nós</a>
 {%- elsif menu.links.size > 0 -%}
-  {%- for link in menu.links -%}<a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>{%- endfor -%}
+  {%- for link in menu.links -%}
+    {%- if link.links.size > 0 -%}
+    <div class="nav-item"><a href="{{ link.url }}" aria-haspopup="true"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a><div class="nav-sub">{%- for l in link.links -%}<a href="{{ l.url }}">{{ l.title }}</a>{%- endfor -%}</div></div>
+    {%- else -%}<a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>{%- endif -%}
+  {%- endfor -%}
 {%- else -%}
   <a href="{{ routes.all_products_collection_url }}">Loja</a>
 {%- endif -%}

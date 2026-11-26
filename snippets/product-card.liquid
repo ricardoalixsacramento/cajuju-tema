@@ -3,8 +3,8 @@
     {%- if product.featured_media -%}
       {{ product.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', widths: '300,450,600,900', sizes: '(min-width: 1000px) 25vw, (min-width: 700px) 33vw, 50vw', alt: product.title }}
       {%- if product.media.size > 1 -%}{{ product.media[1] | image_url: width: 900 | image_tag: class: 'img-2', loading: 'lazy', widths: '300,450,600,900', sizes: '(min-width: 1000px) 25vw, (min-width: 700px) 33vw, 50vw', alt: '' }}{%- endif -%}
-    {%- else -%}<span class="card__placeholder">Foto em breve</span>{%- endif -%}
-    {%- if product.available == false -%}<span class="card__badge">Esgotado</span>{%- elsif badge -%}<span class="card__badge">{{ badge }}</span>{%- endif -%}
+    {%- else -%}{%- render 'pattern-fallback', product: product -%}{%- endif -%}
+    {%- if product.available == false -%}<span class="card__badge">Esgotado</span>{%- elsif product.tags contains 'presentes' -%}{%- capture sv -%}{%- render 'box-saving', product: product -%}{%- endcapture -%}{%- assign sv = sv | strip | plus: 0 -%}<span class="card__badge">{% if sv > 0 %}Poupas {{ sv | money }}{% else %}{{ badge | default: 'Caixa presente' }}{% endif %}</span>{%- elsif badge -%}<span class="card__badge">{{ badge }}</span>{%- endif -%}
   </div>
   <h3 class="card__title">{{ product.title }}</h3>
   <p class="card__price">{% if product.price_varies %}Desde {% endif %}{{ product.price | money }}{% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif %}</p>

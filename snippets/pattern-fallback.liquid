@@ -1,0 +1,8 @@
+{%- comment -%} Imagem do tecido para produtos ainda sem fotografia. {%- endcomment -%}
+{%- assign pf = '' -%}
+{%- assign pl = 'passaros,dente-de-leao,mirtilos,cenouras,limoes,cogumelos' | split: ',' -%}
+{%- for p in pl -%}{%- if product.handle contains p -%}{%- assign pf = p -%}{%- endif -%}{%- endfor -%}
+<span class="fallback">
+  {%- if pf != blank -%}<img src="{{ 'padrao-' | append: pf | append: '.jpg' | asset_url }}" alt="" loading="lazy" width="800" height="1000">{%- endif -%}
+  <span class="fallback__label"><strong>{{ product.title | split: ' — ' | first }}</strong><small>Fotografia em breve</small></span>
+</span>
