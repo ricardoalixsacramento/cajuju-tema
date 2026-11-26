@@ -207,6 +207,16 @@
     "p6"
    ],
    "settings": {}
+  },
+  "botieboos": {
+   "type": "featured-collection",
+   "settings": {
+    "title": "BotieBoos",
+    "text": "Sapatinhos de tecido com fitas de atar, num padrão para cada peça. Ficam bem sozinhos e ainda melhor a combinar.",
+    "product_type": "Sapatinhos",
+    "link": "shopify://collections/acessorios",
+    "limit": 4
+   }
   }
  },
  "order": [
@@ -215,6 +225,7 @@
   "gifts",
   "patterns",
   "featured",
+  "botieboos",
   "story",
   "instagram",
   "newsletter"

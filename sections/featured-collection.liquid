@@ -1,9 +1,15 @@
 {%- assign coll = section.settings.collection -%}
 {%- if coll == blank -%}{%- assign coll = collections.all -%}{%- endif -%}
 <section class="page-width section">
-  <div class="section-head"><div><h2>{{ section.settings.title }}</h2>{% if section.settings.text != blank %}<p>{{ section.settings.text }}</p>{% endif %}</div><a class="link" href="{{ coll.url | default: routes.all_products_collection_url }}">Ver tudo</a></div>
+  <div class="section-head"><div><h2>{{ section.settings.title }}</h2>{% if section.settings.text != blank %}<p>{{ section.settings.text }}</p>{% endif %}</div><a class="link" href="{{ section.settings.link | default: coll.url | default: routes.all_products_collection_url }}">Ver tudo</a></div>
   <div class="grid-products grid-products--scroll">
-    {%- if coll.products_count > 0 -%}
+    {%- if section.settings.product_type != blank -%}
+      {%- assign shown = 0 -%}
+      {%- for product in collections.all.products -%}
+        {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
+        {%- if product.type == section.settings.product_type -%}{%- render 'product-card', product: product -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}
+      {%- endfor -%}
+    {%- elsif coll.products_count > 0 -%}
       {%- assign shown = 0 -%}{%- assign seen = '' -%}
       {%- for product in coll.products -%}
         {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
@@ -29,6 +35,8 @@
 {"type":"text","id":"title","label":"Título","default":"Novidades"},
 {"type":"text","id":"text","label":"Texto"},
 {"type":"collection","id":"collection","label":"Coleção"},
+{"type":"text","id":"product_type","label":"Só produtos do tipo","info":"Ex.: Sapatinhos. Mostra todas as peças desse tipo."},
+{"type":"url","id":"link","label":"Link de 'Ver tudo'"},
 {"type":"range","id":"limit","label":"Nº de produtos","min":4,"max":12,"step":4,"default":4}],
 "presets":[{"name":"Produtos em destaque"}]}
 {% endschema %}
