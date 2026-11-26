@@ -1,10 +1,11 @@
+{%- if section.settings.store_menu -%}{%- assign use_plan = false -%}{%- else -%}{%- assign use_plan = true -%}{%- endif -%}
 {%- assign menu = linklists[section.settings.menu] -%}
 <div class="site-header" data-header>
   <header class="page-width header">
     <div style="display:flex;align-items:center;gap:4px">
       <button type="button" class="icon-btn menu-toggle" data-drawer-open aria-controls="menu-drawer" aria-expanded="false" aria-label="Abrir menu">{% render 'icon', name: 'menu' %}</button>
       <nav class="header__nav" aria-label="Principal">
-        {%- render 'nav-links', menu: menu, use_plan: section.settings.plan_menu -%}
+        {%- render 'nav-links', menu: menu, use_plan: use_plan -%}
       </nav>
     </div>
     <a class="header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }} — início">
@@ -22,14 +23,14 @@
   <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="drawer__head"><span class="header__logo" style="font-size:1.6rem">cajuju</span><button type="button" class="icon-btn" data-drawer-close aria-label="Fechar menu">{% render 'icon', name: 'close' %}</button></div>
     <nav aria-label="Menu móvel">
-      {%- render 'nav-links', menu: menu, use_plan: section.settings.plan_menu -%}
+      {%- render 'nav-links', menu: menu, use_plan: use_plan -%}
       {%- if shop.customer_accounts_enabled -%}<a href="{{ routes.account_url }}">A minha conta</a>{%- endif -%}
     </nav>
   </div>
 </div>
 {% schema %}
 {"name":"Cabeçalho","settings":[
-{"type":"checkbox","id":"plan_menu","label":"Usar o menu do plano (Presentes · Padrões · Peças · Guia de tamanhos · Sobre nós)","default":true},
+{"type":"checkbox","id":"store_menu","label":"Usar o menu da Shopify em vez do menu Cajuju (Presentes · Padrões · Peças · Guia de tamanhos · Sobre nós)","default":false},
 {"type":"link_list","id":"menu","label":"Menu (se o de cima estiver desligado)","default":"main-menu"},
 {"type":"image_picker","id":"logo","label":"Logótipo (opcional)"},
 {"type":"text","id":"logo_text","label":"Logótipo em texto","default":"cajuju"}]}
