@@ -1,0 +1,9 @@
+Handle,Title,Option1 Name,Option1 Value,Variant SKU,Variant Price,Image Src,Image Position,Image Alt Text
+hug-me-passaros,Hug Me Pássaros — Body cruzado,Tamanho,1–3M,CAJ-HUG-ME-PASSAROS-1-3M,29.90,https://twezte-6u.myshopify.com/cdn/shop/t/7/assets/p-hug-me-passaros-0.jpg,1,Hug Me Pássaros — frente
+hug-me-passaros,,,3–6M,CAJ-HUG-ME-PASSAROS-3-6M,29.90,https://twezte-6u.myshopify.com/cdn/shop/t/7/assets/p-hug-me-passaros-2.jpg,2,Hug Me Pássaros — costas
+hug-me-passaros,,,6–9M,CAJ-HUG-ME-PASSAROS-6-9M,29.90,https://twezte-6u.myshopify.com/cdn/shop/t/7/assets/p-hug-me-passaros-1.jpg,3,Hug Me Pássaros
+hug-me-passaros,,,9–12M,CAJ-HUG-ME-PASSAROS-9-12M,29.90,,,
+hug-me-dente-de-leao,Hug Me Dente-de-leão — Body cruzado,Tamanho,1–3M,CAJ-HUG-ME-DENTE-DE-LEAO-1-3M,29.90,https://twezte-6u.myshopify.com/cdn/shop/t/7/assets/p-hug-me-dente-de-leao-1.jpg,1,Hug Me Dente-de-leão — frente
+hug-me-dente-de-leao,,,3–6M,CAJ-HUG-ME-DENTE-DE-LEAO-3-6M,29.90,https://twezte-6u.myshopify.com/cdn/shop/t/7/assets/p-hug-me-dente-de-leao-2.jpg,2,Hug Me Dente-de-leão — costas
+hug-me-dente-de-leao,,,6–9M,CAJ-HUG-ME-DENTE-DE-LEAO-6-9M,29.90,,,
+hug-me-dente-de-leao,,,9–12M,CAJ-HUG-ME-DENTE-DE-LEAO-9-12M,29.90,,,
