@@ -1,14 +1,88 @@
-{"sections":{
-"about":{"type":"about","blocks":{
-"b1":{"type":"card","settings":{"title":"Tecidos macios","text":"Gaze, canelado e interlock de algodão, escolhidos pelo toque suave na pele sensível do bebé."}},
-"b2":{"type":"card","settings":{"title":"Feito em Portugal","text":"Cada peça é cortada e costurada em Portugal, perto de nós, por quem sabe fazer bem e com tempo."}},
-"b3":{"type":"card","settings":{"title":"Pensado para o bebé","text":"Aberturas fáceis, elásticos suaves e costuras macias, porque vestir um bebé deve ser um momento tranquilo."}}},
-"block_order":["b1","b2","b3"],"settings":{}},
-"faq":{"type":"faq","blocks":{
-"q1":{"type":"qa","settings":{"q":"Quanto tempo demora a entrega?","a":"<p>Em Portugal continental, a encomenda chega em poucos dias úteis. Quando for enviada, recebe um email com o número de seguimento.</p>"}},
-"q2":{"type":"qa","settings":{"q":"Quais são os portes de envio?","a":"<p>Os portes são calculados no checkout, antes de concluir a compra.</p>"}},
-"q3":{"type":"qa","settings":{"q":"Posso trocar o tamanho?","a":"<p>Sim. Pode trocar o tamanho com a peça por usar e com etiqueta. Basta escrever-nos.</p>"}},
-"q4":{"type":"qa","settings":{"q":"Como devo lavar as peças?","a":"<p>Recomendamos lavar a 30 °C, do avesso, com detergente suave e secar ao ar. Assim o tecido mantém-se macio por muito mais tempo.</p>"}},
-"q5":{"type":"qa","settings":{"q":"Como escolho o tamanho certo?","a":"<p>Consulte o guia de tamanhos na página de cada peça. Se estiver entre dois tamanhos, escolha o maior: os bebés crescem depressa!</p>"}}},
-"block_order":["q1","q2","q3","q4","q5"],"settings":{}}},
-"order":["about","faq"]}
+{
+ "sections": {
+  "about": {
+   "type": "about",
+   "blocks": {
+    "b1": {
+     "type": "card",
+     "settings": {
+      "title": "Tecidos macios",
+      "text": "Gaze, canelado e interlock de algodão, escolhidos pelo toque suave na pele sensível do bebé."
+     }
+    },
+    "b2": {
+     "type": "card",
+     "settings": {
+      "title": "Feito em Portugal",
+      "text": "Cada peça é cortada e costurada em Portugal, perto de nós, por quem sabe fazer bem e com tempo."
+     }
+    },
+    "b3": {
+     "type": "card",
+     "settings": {
+      "title": "Pensado para o bebé",
+      "text": "Aberturas fáceis, elásticos suaves e costuras macias, porque vestir um bebé deve ser um momento tranquilo."
+     }
+    }
+   },
+   "block_order": [
+    "b1",
+    "b2",
+    "b3"
+   ],
+   "settings": {}
+  },
+  "faq": {
+   "type": "faq",
+   "blocks": {
+    "q1": {
+     "type": "qa",
+     "settings": {
+      "q": "Que tamanho escolher para oferecer?",
+      "a": "<p>Se o bebé ainda não nasceu, escolhe 1–3M. Se já nasceu, escolhe um tamanho acima da idade. E se não servir, a troca é grátis durante 30 dias.</p>"
+     }
+    },
+    "q2": {
+     "type": "qa",
+     "settings": {
+      "q": "Quanto tempo demora a entrega?",
+      "a": "<p>Entre 2 e 3 dias úteis em Portugal continental.</p>"
+     }
+    },
+    "q3": {
+     "type": "qa",
+     "settings": {
+      "q": "Quanto custam os portes?",
+      "a": "<p>São grátis a partir de 50 € e em todas as caixas de presente. Abaixo disso, custam 3,95 € em Portugal continental.</p>"
+     }
+    },
+    "q4": {
+     "type": "qa",
+     "settings": {
+      "q": "Posso enviar diretamente para a pessoa que vai receber?",
+      "a": "<p>Sim. Vai embrulhado, com o teu postal escrito à mão e sem preço à vista.</p>"
+     }
+    },
+    "q5": {
+     "type": "qa",
+     "settings": {
+      "q": "Como lavar?",
+      "a": "<p>Segue as instruções da etiqueta de cada peça.</p>"
+     }
+    }
+   },
+   "block_order": [
+    "q1",
+    "q2",
+    "q3",
+    "q4",
+    "q5"
+   ],
+   "settings": {}
+  }
+ },
+ "order": [
+  "about",
+  "faq"
+ ]
+}

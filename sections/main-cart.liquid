@@ -1,24 +1,48 @@
-<section class="narrow" style="padding-top:48px;padding-bottom:64px">
-  <h1 style="font-size:42px;margin-bottom:16px">Carrinho</h1>
+{%- assign threshold = section.settings.free_shipping | times: 100 -%}
+<section class="narrow" style="padding-top:clamp(28px,4vw,56px)">
+  <h1 style="font-size:var(--h2);margin-bottom:16px">Carrinho</h1>
   {%- if cart.item_count > 0 -%}
+    {%- if threshold > 0 -%}
+      {%- assign remaining = threshold | minus: cart.total_price -%}
+      {%- assign pct = cart.total_price | times: 100 | divided_by: threshold -%}{%- if pct > 100 -%}{%- assign pct = 100 -%}{%- endif -%}
+      <div class="ship-bar">
+        <p>{% if remaining > 0 %}Faltam <strong>{{ remaining | money }}</strong> para teres <strong>portes grátis</strong>.{% else %}Boa! Tens <strong>portes grátis</strong> nesta encomenda.{% endif %}</p>
+        <div class="ship-bar__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct }}"><span style="width:{{ pct }}%"></span></div>
+      </div>
+    {%- endif -%}
   <form action="{{ routes.cart_url }}" method="post">
     {%- for item in cart.items -%}
     <div class="cart-row">
-      {%- if item.image -%}{{ item.image | image_url: width: 200 | image_tag: alt: item.title }}{%- else -%}<div></div>{%- endif -%}
-      <div><a href="{{ item.url }}" style="font-weight:700">{{ item.product.title }}</a>{% unless item.product.has_only_default_variant %}<div class="muted">{{ item.variant.title }}</div>{% endunless %}
-        <label class="vh" for="q{{ forloop.index }}">Quantidade</label><input class="select" style="width:80px;margin-top:8px" id="q{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0">
-        <a href="{{ item.url_to_remove }}" class="muted" style="margin-left:12px;font-size:14px">Remover</a></div>
+      {%- if item.image -%}{{ item.image | image_url: width: 240 | image_tag: alt: item.title, widths: '120,240' }}{%- else -%}<div class="card__media" style="width:88px"></div>{%- endif -%}
+      <div>
+        <a href="{{ item.url }}" style="font-weight:700">{{ item.product.title }}</a>
+        {%- unless item.product.has_only_default_variant -%}<div class="muted" style="font-size:.9rem">{{ item.variant.title }}</div>{%- endunless -%}
+        {%- for p in item.properties -%}{%- unless p.last == blank or p.first contains '_' -%}<div class="muted" style="font-size:.85rem">{{ p.first }}: {{ p.last }}</div>{%- endunless -%}{%- endfor -%}
+        <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
+          <label class="vh" for="q{{ forloop.index }}">Quantidade</label><input class="select" style="width:76px" id="q{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" inputmode="numeric">
+          <a href="{{ item.url_to_remove }}" class="muted" style="font-size:.9rem">Remover</a>
+        </div>
+      </div>
       <strong>{{ item.final_line_price | money }}</strong>
     </div>
     {%- endfor -%}
+    <div class="gift-options">
+      <h2>Para oferecer</h2>
+      <label class="check"><input type="checkbox" name="attributes[Embrulho de oferta]" value="Sim"{% if cart.attributes['Embrulho de oferta'] == 'Sim' %} checked{% endif %}> Embrulhar para oferta <span class="muted">(grátis)</span></label>
+      <label class="check"><input type="checkbox" name="attributes[Talão sem preço]" value="Sim"{% if cart.attributes['Talão sem preço'] == 'Sim' %} checked{% endif %}> Enviar talão de oferta, sem preço</label>
+      <label for="cart-msg" style="font-weight:600;margin-top:6px">Mensagem para o postal <span class="muted" style="font-weight:400">(escrita à mão por nós)</span></label>
+      <textarea id="cart-msg" class="field field--box" name="attributes[Mensagem do postal]" rows="3" maxlength="220" placeholder="Ex.: Muitos parabéns pelo bebé! Um beijinho, Ana">{{ cart.attributes['Mensagem do postal'] }}</textarea>
+      <p class="muted hint">Podes indicar a morada de quem recebe no checkout.</p>
+    </div>
     <div class="cart-total">
-      <p style="margin:0;font-size:20px;font-weight:700">Subtotal: {{ cart.total_price | money }}</p>
-      <p class="muted" style="margin:0;font-size:14px">Portes e descontos calculados no checkout.</p>
-      <div class="row"><button class="btn btn--light" type="submit" name="update">Atualizar</button><button class="btn btn--primary" type="submit" name="checkout">Finalizar compra</button></div>
+      <p style="font-size:1.25rem;font-weight:700">Subtotal: {{ cart.total_price | money }}</p>
+      <p class="muted" style="font-size:.9rem">Portes calculados no checkout. Trocas de tamanho grátis durante 30 dias.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end"><button class="btn btn--light" type="submit" name="update">Atualizar</button><button class="btn btn--primary" type="submit" name="checkout">Finalizar compra</button></div>
     </div>
   </form>
   {%- else -%}
-  <p class="muted">O seu carrinho está vazio.</p><a class="btn btn--primary" href="{{ routes.all_products_collection_url }}">Ver coleção</a>
+  <p class="muted" style="margin-bottom:20px">O teu carrinho está vazio.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn--primary" href="/collections/all/presentes">Ver presentes</a><a class="btn btn--light" href="{{ routes.all_products_collection_url }}">Ver todas as peças</a></div>
   {%- endif -%}
 </section>
-{% schema %}{"name":"Carrinho"}{% endschema %}
+{% schema %}{"name":"Carrinho","settings":[{"type":"number","id":"free_shipping","label":"Portes grátis a partir de (€) — 0 para esconder","default":50}]}{% endschema %}

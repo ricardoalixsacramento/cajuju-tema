@@ -13,8 +13,8 @@
         <h1>{{ section.settings.title }}</h1>
         <p class="sub">{{ section.settings.text }}</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="{{ section.settings.btn1_link | default: routes.all_products_collection_url }}">{{ section.settings.btn1 }}</a>
-          {%- if section.settings.btn2 != blank -%}<a class="btn btn--light" href="{{ section.settings.btn2_link | default: '/pages/a-cajuju' }}">{{ section.settings.btn2 }}</a>{%- endif -%}
+          <a class="btn btn--primary" href="{{ section.settings.btn1_link | default: '/collections/all/presentes' }}">{{ section.settings.btn1 }}</a>
+          {%- if section.settings.btn2 != blank -%}<a class="btn btn--light" href="{{ section.settings.btn2_link | default: routes.all_products_collection_url }}">{{ section.settings.btn2 }}</a>{%- endif -%}
         </div>
       </div>
     </div>
@@ -24,9 +24,9 @@
 {"name":"Banner principal","settings":[
 {"type":"image_picker","id":"image","label":"Imagem"},
 {"type":"text","id":"eyebrow","label":"Etiqueta","default":"Feito em Portugal · Pensado para o bebé"},
-{"type":"text","id":"title","label":"Título","default":"Roupa macia para os primeiros abraços"},
-{"type":"textarea","id":"text","label":"Subtítulo","default":"Peças em algodão, feitas em Portugal, pensadas para a pele delicada do bebé e para o dia a dia dos pais."},
-{"type":"text","id":"btn1","label":"Botão 1","default":"Ver coleção"},{"type":"url","id":"btn1_link","label":"Link botão 1"},
-{"type":"text","id":"btn2","label":"Botão 2","default":"A nossa história"},{"type":"url","id":"btn2_link","label":"Link botão 2"}],
+{"type":"text","id":"title","label":"Título","default":"Pequenas peças para grandes começos."},
+{"type":"textarea","id":"text","label":"Subtítulo","default":"Roupa de bebé com padrões originais, feita em Portugal em pequenas séries. Chega embrulhada, pronta a oferecer."},
+{"type":"text","id":"btn1","label":"Botão 1","default":"Ver presentes"},{"type":"url","id":"btn1_link","label":"Link botão 1"},
+{"type":"text","id":"btn2","label":"Botão 2","default":"Ver todas as peças"},{"type":"url","id":"btn2_link","label":"Link botão 2"}],
 "presets":[{"name":"Banner principal"}]}
 {% endschema %}

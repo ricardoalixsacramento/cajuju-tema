@@ -10,33 +10,33 @@
     "v1": {
      "type": "value",
      "settings": {
-      "icon": "leaf",
-      "title": "Tecidos macios",
-      "text": "Gaze, canelado e interlock, suaves na pele."
+      "icon": "home",
+      "title": "Feito em Portugal",
+      "text": "Em pequenas séries."
      }
     },
     "v2": {
      "type": "value",
      "settings": {
-      "icon": "home",
-      "title": "Feito em Portugal",
-      "text": "Produzido perto de nós, com cuidado."
+      "icon": "gift",
+      "title": "Embrulho de oferta grátis",
+      "text": "Com postal escrito à mão."
      }
     },
     "v3": {
      "type": "value",
      "settings": {
-      "icon": "truck",
-      "title": "Envio rápido",
-      "text": "Enviamos para todo o Portugal."
+      "icon": "return",
+      "title": "Trocas em 30 dias",
+      "text": "Trocas de tamanho grátis."
      }
     },
     "v4": {
      "type": "value",
      "settings": {
-      "icon": "return",
-      "title": "Trocas fáceis",
-      "text": "Trocar de tamanho sem complicações."
+      "icon": "truck",
+      "title": "Portes grátis",
+      "text": "A partir de 50 €."
      }
     }
    },
@@ -51,7 +51,7 @@
   "featured": {
    "type": "featured-collection",
    "settings": {
-    "title": "Novidades",
+    "title": "Peças em destaque",
     "limit": 4
    }
   },
@@ -106,47 +106,105 @@
    "type": "newsletter",
    "settings": {}
   },
-  "categories": {
-   "type": "categories",
+  "gifts": {
+   "type": "gift-boxes",
    "blocks": {
-    "c1": {
-     "type": "category",
+    "k1": {
+     "type": "perk",
      "settings": {
-      "collection": "bodies",
-      "label": "Bodies",
-      "fallback": "cat-bodies.jpg"
+      "icon": "gift",
+      "text": "Papel de seda e postal escrito à mão"
      }
     },
-    "c2": {
-     "type": "category",
+    "k2": {
+     "type": "perk",
      "settings": {
-      "collection": "babygrows",
-      "label": "Babygrows",
-      "fallback": "cat-babygrows.jpg"
+      "icon": "heart",
+      "text": "Talão de oferta sem preço"
      }
     },
-    "c3": {
-     "type": "category",
+    "k3": {
+     "type": "perk",
      "settings": {
-      "collection": "conjuntos",
-      "label": "Conjuntos",
-      "fallback": "cat-conjuntos.jpg"
+      "icon": "truck",
+      "text": "Portes grátis nas caixas"
      }
     },
-    "c4": {
-     "type": "category",
+    "k4": {
+     "type": "perk",
      "settings": {
-      "collection": "acessorios",
-      "label": "Acessórios",
-      "fallback": "cat-acessorios.jpg"
+      "icon": "return",
+      "text": "Trocas de tamanho em 30 dias"
      }
     }
    },
    "block_order": [
-    "c1",
-    "c2",
-    "c3",
-    "c4"
+    "k1",
+    "k2",
+    "k3",
+    "k4"
+   ],
+   "settings": {}
+  },
+  "patterns": {
+   "type": "patterns",
+   "blocks": {
+    "p1": {
+     "type": "pattern",
+     "settings": {
+      "tag": "Pássaros",
+      "line": "Voltam todas as primaveras",
+      "fallback": "padrao-passaros.jpg"
+     }
+    },
+    "p2": {
+     "type": "pattern",
+     "settings": {
+      "tag": "Dente-de-leão",
+      "line": "Para pedir desejos",
+      "fallback": "padrao-dente-de-leao.jpg"
+     }
+    },
+    "p3": {
+     "type": "pattern",
+     "settings": {
+      "tag": "Mirtilos",
+      "line": "O sabor do fim do verão",
+      "fallback": "padrao-mirtilos.jpg"
+     }
+    },
+    "p4": {
+     "type": "pattern",
+     "settings": {
+      "tag": "Cenouras",
+      "line": "Para os gulosos da horta",
+      "fallback": "padrao-cenouras.jpg"
+     }
+    },
+    "p5": {
+     "type": "pattern",
+     "settings": {
+      "tag": "Limões",
+      "line": "Cor para os dias frios",
+      "fallback": "padrao-limoes.jpg"
+     }
+    },
+    "p6": {
+     "type": "pattern",
+     "settings": {
+      "tag": "Cogumelos",
+      "line": "Pequenos tesouros do bosque",
+      "fallback": "padrao-cogumelos.jpg"
+     }
+    }
+   },
+   "block_order": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6"
    ],
    "settings": {}
   }
@@ -154,7 +212,8 @@
  "order": [
   "hero",
   "values",
-  "categories",
+  "gifts",
+  "patterns",
   "featured",
   "story",
   "instagram",

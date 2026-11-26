@@ -26,17 +26,36 @@
           <label class="size"><input type="radio" name="id" value="{{ variant.id }}" data-variant data-title="{{ variant.title | escape }}" data-price="{{ variant.price | money | escape }}"{% if variant.id == current.id %} checked{% endif %}{% unless variant.available %} disabled{% endunless %}><span>{{ variant.title }}</span></label>
         {%- endfor -%}
         </div>
+        <p class="hint">A oferecer? Se o bebé ainda não nasceu, escolhe 1–3M; se já nasceu, um tamanho acima da idade. As trocas de tamanho são grátis durante 30 dias.</p>
       </fieldset>
+      {%- endif -%}
+      {%- if product.tags contains 'presentes' -%}
+      <div class="gift-note">
+        <label for="gift-msg"><strong>Mensagem para o postal</strong> <span class="muted">(opcional, escrita à mão por nós)</span></label>
+        <textarea id="gift-msg" class="field field--box" name="properties[Mensagem do postal]" maxlength="220" rows="3" placeholder="Ex.: Bem-vindo ao mundo, Tomás! Com amor, avó Rosa" data-count></textarea>
+        <p class="muted hint" data-count-out>0/220</p>
+      </div>
       {%- endif -%}
       <div class="buy" style="margin-top:20px">
         <div class="qty"><button type="button" data-qty="-1" aria-label="Menos">−</button><label class="vh" for="qty">Quantidade</label><input id="qty" type="number" name="quantity" value="1" min="1" inputmode="numeric"><button type="button" data-qty="1" aria-label="Mais">+</button></div>
         <button class="btn btn--primary" type="submit" data-buy{% unless product.available %} disabled{% endunless %}>{% if product.available %}Adicionar ao carrinho{% else %}Esgotado{% endif %}</button>
       </div>
     {%- endform -%}
+    {%- if product.tags contains 'presentes' -%}
+    <ul class="includes">
+      <li>{% render 'icon', name: 'gift', size: 20, color: '#8A5A3C' %}Caixa com papel de seda e postal escrito à mão</li>
+      <li>{% render 'icon', name: 'heart', size: 20, color: '#8A5A3C' %}Talão de oferta sem preço — podes enviar diretamente para quem recebe</li>
+      <li>{% render 'icon', name: 'truck', size: 20, color: '#8A5A3C' %}Portes grátis em Portugal continental</li>
+      <li>{% render 'icon', name: 'return', size: 20, color: '#8A5A3C' %}Trocas de tamanho grátis durante 30 dias</li>
+    </ul>
+    {%- endif -%}
     <div class="product__desc rte">{{ product.description }}</div>
+    {%- unless product.tags contains 'presentes' -%}
+    <a class="gift-cta" href="/collections/all/presentes">{% render 'icon', name: 'gift', size: 26, color: '#8A5A3C' %}<span><strong>É para oferecer?</strong><br>Vê as caixas de presente com peças do mesmo padrão. Chegam embrulhadas, com postal e portes grátis.</span>{% render 'icon', name: 'arrow', size: 18 %}</a>
+    {%- endunless -%}
     <div class="badges">
       <div>{% render 'icon', name: 'home', color: '#8A5A3C' %}{{ section.settings.badge1 }}</div>
-      <div>{% render 'icon', name: 'leaf', color: '#8A5A3C' %}{{ section.settings.badge2 }}</div>
+      <div>{% render 'icon', name: 'gift', color: '#8A5A3C' %}{{ section.settings.badge2 }}</div>
       <div>{% render 'icon', name: 'return', color: '#8A5A3C' %}{{ section.settings.badge3 }}</div>
     </div>
     <div class="acc">
@@ -54,7 +73,7 @@
 {"name":"Produto","settings":[
 {"type":"text","id":"size_link","label":"Link do guia de tamanhos","default":"#guia"},
 {"type":"text","id":"badge1","label":"Selo 1","default":"Feito em Portugal"},
-{"type":"text","id":"badge2","label":"Selo 2","default":"Tecidos macios"},
-{"type":"text","id":"badge3","label":"Selo 3","default":"Trocas fáceis"}],
+{"type":"text","id":"badge2","label":"Selo 2","default":"Embrulho de oferta grátis"},
+{"type":"text","id":"badge3","label":"Selo 3","default":"Trocas grátis 30 dias"}],
 "blocks":[{"type":"collapsible","name":"Separador","settings":[{"type":"text","id":"heading","label":"Título"},{"type":"richtext","id":"content","label":"Conteúdo"}]}]}
 {% endschema %}

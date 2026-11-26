@@ -1,16 +1,23 @@
 <section class="page-width page-head">
-  <nav class="crumbs" aria-label="Caminho"><a href="{{ routes.root_url }}">Início</a> / {{ collection.title }}</nav>
-  <h1>{{ collection.title }}</h1>
-  {%- if collection.description != blank -%}<div class="desc rte">{{ collection.description }}</div>{%- elsif section.settings.fallback != blank -%}<p class="desc">{{ section.settings.fallback }}</p>{%- endif -%}
+  {%- assign tagtitle = current_tags.first -%}
+  {%- if tagtitle == 'presentes' -%}{%- assign heading = 'Caixas de presente' -%}{%- elsif tagtitle -%}{%- assign heading = 'Padrão ' | append: tagtitle -%}{%- elsif collection.handle == 'all' -%}{%- assign heading = 'Todas as peças' -%}{%- else -%}{%- assign heading = collection.title -%}{%- endif -%}
+  <nav class="crumbs" aria-label="Caminho"><a href="{{ routes.root_url }}">Início</a> / {{ heading }}</nav>
+  <h1>{{ heading }}</h1>
+  {%- if tagtitle == 'presentes' -%}<p class="desc">Peças do mesmo padrão, escolhidas para combinar. Chegam embrulhadas, com papel de seda, um postal escrito à mão com a tua mensagem e talão de oferta sem preço. Portes grátis.</p>
+  {%- elsif tagtitle -%}{%- render 'pattern-line', tag: tagtitle -%}
+  {%- elsif collection.description != blank -%}<div class="desc rte">{{ collection.description }}</div>{%- elsif section.settings.fallback != blank -%}<p class="desc">{{ section.settings.fallback }}</p>{%- endif -%}
 </section>
 <div class="page-width toolbar">
   <div class="chips">
-    <a class="chip{% if collection.handle == 'all' %} is-active{% endif %}" href="{{ routes.all_products_collection_url }}">Tudo</a>
+    <a class="chip{% if collection.handle == 'all' and current_tags == empty %} is-active{% endif %}" href="{{ routes.all_products_collection_url }}">Tudo</a>
+    <a class="chip{% if current_tags contains 'presentes' %} is-active{% endif %}" href="/collections/all/presentes">Presentes</a>
+    {%- assign pats = 'Pássaros,Dente-de-leão,Mirtilos,Cenouras,Limões,Cogumelos' | split: ',' -%}
+    {%- for p in pats -%}<a class="chip{% if current_tags contains p %} is-active{% endif %}" href="/collections/all/{{ p | handleize }}">{{ p }}</a>{%- endfor -%}
     {%- assign menu = linklists[section.settings.menu] -%}
     {%- for link in menu.links -%}<a class="chip{% if link.active %} is-active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
   </div>
   <div style="display:flex;align-items:center;gap:16px">
-    <span class="count">{{ collection.products_count }} {% if collection.products_count == 1 %}peça{% else %}peças{% endif %}</span>
+    <span class="count">{{ collection.products.size }} {% if collection.products.size == 1 %}artigo{% else %}artigos{% endif %}</span>
     <label class="sort"><span class="vh">Ordenar por</span>
       <select class="select" data-sort>
         {%- for opt in collection.sort_options -%}<option value="{{ opt.value }}"{% if opt.value == collection.sort_by %} selected{% endif %}>{{ opt.name }}</option>{%- endfor -%}
@@ -29,5 +36,5 @@
 {% schema %}
 {"name":"Coleção","settings":[
 {"type":"link_list","id":"menu","label":"Filtros rápidos (menu)"},
-{"type":"textarea","id":"fallback","label":"Descrição se a coleção não tiver","default":"Bodies, babygrows e conjuntos para os primeiros meses: macios, fáceis de vestir e em padrões que combinam entre si."}]}
+{"type":"textarea","id":"fallback","label":"Descrição se a coleção não tiver","default":"Babygrows, bodies, conjuntos e acessórios com padrões originais, feitos em Portugal. Escolhe por padrão para montar uma família de peças que combinam."}]}
 {% endschema %}

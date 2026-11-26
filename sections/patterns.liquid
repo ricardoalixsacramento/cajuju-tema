@@ -1,0 +1,17 @@
+<section class="page-width section" id="padroes">
+  <div class="section-head"><div><h2>{{ section.settings.title }}</h2>{% if section.settings.text != blank %}<p>{{ section.settings.text }}</p>{% endif %}</div></div>
+  <div class="patterns">
+    {%- for block in section.blocks -%}
+      <a class="pattern" href="/collections/all/{{ block.settings.tag | handleize }}" {{ block.shopify_attributes }}>
+        <span class="pattern__img">{%- if block.settings.image -%}{{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300,600', sizes: '(min-width: 900px) 16vw, 33vw', alt: '' }}{%- else -%}<img src="{{ block.settings.fallback | asset_url }}" alt="" loading="lazy" width="600" height="600">{%- endif -%}</span>
+        <span class="pattern__name">{{ block.settings.tag }}</span>
+        <span class="pattern__line">{{ block.settings.line }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+{% schema %}
+{"name":"Escolhe um padrão","settings":[{"type":"text","id":"title","label":"Título","default":"Escolhe um padrão"},{"type":"text","id":"text","label":"Texto","default":"Cada padrão é uma pequena família de peças que combinam entre si."}],
+"blocks":[{"type":"pattern","name":"Padrão","settings":[{"type":"text","id":"tag","label":"Padrão (igual à etiqueta dos produtos)"},{"type":"text","id":"line","label":"Frase"},{"type":"image_picker","id":"image","label":"Imagem"},{"type":"text","id":"fallback","label":"Imagem do tema","default":"padrao-passaros.jpg"}]}],
+"max_blocks":8,"presets":[{"name":"Escolhe um padrão"}]}
+{% endschema %}

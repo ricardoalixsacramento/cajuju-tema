@@ -1,0 +1,11 @@
+{%- if use_plan -%}
+  <a href="/collections/all/presentes"{% if request.path contains '/presentes' %} aria-current="page"{% endif %}>Presentes</a>
+  <a href="/#padroes">Padrões</a>
+  <a href="{{ routes.all_products_collection_url }}"{% if request.path == '/collections/all' %} aria-current="page"{% endif %}>Peças</a>
+  <a href="/pages/guia-de-tamanhos"{% if request.path contains 'guia-de-tamanhos' %} aria-current="page"{% endif %}>Guia de tamanhos</a>
+  <a href="/pages/a-cajuju"{% if request.path contains 'a-cajuju' %} aria-current="page"{% endif %}>Sobre nós</a>
+{%- elsif menu.links.size > 0 -%}
+  {%- for link in menu.links -%}<a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>{%- endfor -%}
+{%- else -%}
+  <a href="{{ routes.all_products_collection_url }}">Loja</a>
+{%- endif -%}

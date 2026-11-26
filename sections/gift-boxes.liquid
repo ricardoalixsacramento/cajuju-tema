@@ -1,0 +1,26 @@
+{%- assign tag = section.settings.tag | default: 'presentes' -%}
+<section class="page-width section" id="presentes">
+  <div class="section-head"><div><p class="eyebrow">{{ section.settings.eyebrow }}</p><h2>{{ section.settings.title }}</h2>{% if section.settings.text != blank %}<p>{{ section.settings.text }}</p>{% endif %}</div><a class="link" href="/collections/all/{{ tag }}">Ver todas</a></div>
+  <div class="grid-products grid-products--boxes">
+    {%- assign shown = 0 -%}
+    {%- for product in collections.all.products -%}
+      {%- if product.tags contains tag and shown < 4 -%}
+        {%- assign shown = shown | plus: 1 -%}
+        {%- render 'product-card', product: product, badge: 'Caixa presente' -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if shown == 0 -%}<p class="muted">As caixas de presente estão a chegar.</p>{%- endif -%}
+  </div>
+  <ul class="perks">
+    {%- for block in section.blocks -%}<li {{ block.shopify_attributes }}>{% render 'icon', name: block.settings.icon, color: '#8A5A3C', size: 20 %}<span>{{ block.settings.text }}</span></li>{%- endfor -%}
+  </ul>
+</section>
+{% schema %}
+{"name":"Caixas presente","settings":[
+{"type":"text","id":"eyebrow","label":"Etiqueta","default":"Para oferecer"},
+{"type":"text","id":"title","label":"Título","default":"Caixas de presente"},
+{"type":"textarea","id":"text","label":"Texto","default":"Peças do mesmo padrão, escolhidas para combinar. Chegam embrulhadas, com um postal escrito à mão com a tua mensagem."},
+{"type":"text","id":"tag","label":"Etiqueta dos produtos","default":"presentes"}],
+"blocks":[{"type":"perk","name":"Vantagem","settings":[{"type":"select","id":"icon","label":"Ícone","options":[{"value":"gift","label":"Presente"},{"value":"truck","label":"Envio"},{"value":"return","label":"Trocas"},{"value":"heart","label":"Coração"}],"default":"gift"},{"type":"text","id":"text","label":"Texto"}]}],
+"presets":[{"name":"Caixas presente"}]}
+{% endschema %}

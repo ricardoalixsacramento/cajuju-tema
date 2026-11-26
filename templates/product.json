@@ -7,21 +7,21 @@
      "type": "collapsible",
      "settings": {
       "heading": "Composição e cuidados",
-      "content": "<p>A composição de cada peça está indicada na descrição e na etiqueta. Segue sempre as instruções de lavagem da etiqueta.</p>"
+      "content": "<p>A composição de cada peça está na descrição e na etiqueta. Segue sempre as instruções de lavagem da etiqueta.</p>"
      }
     },
     "c2": {
      "type": "collapsible",
      "settings": {
-      "heading": "Envios e devoluções",
-      "content": "<p>Enviamos para todo o Portugal. Pode trocar o tamanho ou devolver a peça por usar e com etiqueta — veja os prazos nas Perguntas frequentes.</p>"
+      "heading": "Envios, trocas e devoluções",
+      "content": "<p>Portes grátis a partir de 50 €; abaixo disso, 3,95 € em Portugal continental. Entrega em 2 a 3 dias úteis.</p><p>Trocas de tamanho grátis durante 30 dias. Podes devolver em 14 dias, nos termos da lei.</p>"
      }
     },
     "c3": {
      "type": "collapsible",
      "settings": {
-      "heading": "Detalhes da peça",
-      "content": "<p>Acabamentos suaves, elásticos que não apertam e aberturas pensadas para vestir sem esforço.</p>"
+      "heading": "Para oferecer",
+      "content": "<p>Todas as encomendas podem ir embrulhadas para oferta, de graça, com um postal escrito à mão com a tua mensagem e talão sem preço. Podes enviar diretamente para quem recebe.</p>"
      }
     }
    },
@@ -86,10 +86,15 @@
     "title": "Também vai gostar",
     "limit": 4
    }
+  },
+  "family": {
+   "type": "same-pattern",
+   "settings": {}
   }
  },
  "order": [
   "main",
+  "family",
   "guide",
   "related"
  ]

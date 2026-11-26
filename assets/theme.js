@@ -22,4 +22,5 @@
   if(g&&dots.length){g.addEventListener('scroll',function(){var i=Math.round(g.scrollLeft/g.clientWidth);dots.forEach(function(d,k){d.classList.toggle('is-active',k===i)})},{passive:true});}
   var buy=document.querySelector('[data-buy]'),sticky=document.querySelector('[data-sticky-buy]');
   if(buy&&sticky&&'IntersectionObserver' in window){new IntersectionObserver(function(en){var vis=!en[0].isIntersecting&&en[0].boundingClientRect.top<0;sticky.classList.toggle('is-visible',vis);sticky.setAttribute('aria-hidden',vis?'false':'true');sticky.querySelector('button').tabIndex=vis?0:-1;}).observe(buy);}
+  document.addEventListener('input',function(e){if(e.target.matches('[data-count]')){var o=document.querySelector('[data-count-out]');if(o)o.textContent=e.target.value.length+'/'+e.target.maxLength;}});
 })();
