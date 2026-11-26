@@ -1,1 +1,96 @@
-{"sections": {"main": {"type": "main-product", "blocks": {"c1": {"type": "collapsible", "settings": {"heading": "Composição e cuidados", "content": "<p>A composição de cada peça está indicada na descrição e na etiqueta. Segue sempre as instruções de lavagem da etiqueta.</p>"}}, "c2": {"type": "collapsible", "settings": {"heading": "Envios e devoluções", "content": "<p>Enviamos para todo o Portugal. Pode trocar o tamanho ou devolver a peça por usar e com etiqueta — veja os prazos nas Perguntas frequentes.</p>"}}, "c3": {"type": "collapsible", "settings": {"heading": "Detalhes da peça", "content": "<p>Acabamentos suaves, elásticos que não apertam e aberturas pensadas para vestir sem esforço.</p>"}}}, "block_order": ["c1", "c2", "c3"], "settings": {}}, "guide": {"type": "size-guide", "blocks": {"r1": {"type": "row", "settings": {"size": "1–3 M", "age": "1–3 meses", "height": "56–62", "weight": "—"}}, "r2": {"type": "row", "settings": {"size": "3–6 M", "age": "3–6 meses", "height": "62–68", "weight": "—"}}, "r3": {"type": "row", "settings": {"size": "6–9 M", "age": "6–9 meses", "height": "68–74", "weight": "—"}}, "r4": {"type": "row", "settings": {"size": "9–12 M", "age": "9–12 meses", "height": "74–80", "weight": "—"}}}, "block_order": ["r1", "r2", "r3", "r4"], "settings": {}}, "related": {"type": "featured-collection", "settings": {"title": "Também vai gostar", "limit": 3}}}, "order": ["main", "guide", "related"]}
+{
+ "sections": {
+  "main": {
+   "type": "main-product",
+   "blocks": {
+    "c1": {
+     "type": "collapsible",
+     "settings": {
+      "heading": "Composição e cuidados",
+      "content": "<p>A composição de cada peça está indicada na descrição e na etiqueta. Segue sempre as instruções de lavagem da etiqueta.</p>"
+     }
+    },
+    "c2": {
+     "type": "collapsible",
+     "settings": {
+      "heading": "Envios e devoluções",
+      "content": "<p>Enviamos para todo o Portugal. Pode trocar o tamanho ou devolver a peça por usar e com etiqueta — veja os prazos nas Perguntas frequentes.</p>"
+     }
+    },
+    "c3": {
+     "type": "collapsible",
+     "settings": {
+      "heading": "Detalhes da peça",
+      "content": "<p>Acabamentos suaves, elásticos que não apertam e aberturas pensadas para vestir sem esforço.</p>"
+     }
+    }
+   },
+   "block_order": [
+    "c1",
+    "c2",
+    "c3"
+   ],
+   "settings": {}
+  },
+  "guide": {
+   "type": "size-guide",
+   "blocks": {
+    "r1": {
+     "type": "row",
+     "settings": {
+      "size": "1–3 M",
+      "age": "1–3 meses",
+      "height": "56–62",
+      "weight": "—"
+     }
+    },
+    "r2": {
+     "type": "row",
+     "settings": {
+      "size": "3–6 M",
+      "age": "3–6 meses",
+      "height": "62–68",
+      "weight": "—"
+     }
+    },
+    "r3": {
+     "type": "row",
+     "settings": {
+      "size": "6–9 M",
+      "age": "6–9 meses",
+      "height": "68–74",
+      "weight": "—"
+     }
+    },
+    "r4": {
+     "type": "row",
+     "settings": {
+      "size": "9–12 M",
+      "age": "9–12 meses",
+      "height": "74–80",
+      "weight": "—"
+     }
+    }
+   },
+   "block_order": [
+    "r1",
+    "r2",
+    "r3",
+    "r4"
+   ],
+   "settings": {}
+  },
+  "related": {
+   "type": "featured-collection",
+   "settings": {
+    "title": "Também vai gostar",
+    "limit": 4
+   }
+  }
+ },
+ "order": [
+  "main",
+  "guide",
+  "related"
+ ]
+}

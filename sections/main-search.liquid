@@ -1,6 +1,6 @@
-<section class="wrap page-head"><h1>Procurar</h1>
+<section class="page-width page-head"><h1>Procurar</h1>
 <form action="{{ routes.search_url }}" method="get" role="search" class="row" style="max-width:560px"><label class="vh" for="s">Procurar</label><input class="field" id="s" type="search" name="q" value="{{ search.terms | escape }}" placeholder="O que procura?"><input type="hidden" name="type" value="product"><button class="btn btn--dark" type="submit">Procurar</button></form></section>
-<section class="wrap" style="padding-bottom:64px">
+<section class="page-width" style="padding-bottom:64px">
 {%- if search.performed -%}<div class="grid-products">{%- for item in search.results -%}{%- if item.object_type == 'product' -%}{%- render 'product-card', product: item -%}{%- endif -%}{%- else -%}<p>Sem resultados para “{{ search.terms }}”.</p>{%- endfor -%}</div>{%- endif -%}
 </section>
 {% schema %}{"name":"Pesquisa"}{% endschema %}

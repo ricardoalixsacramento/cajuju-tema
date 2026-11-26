@@ -1,14 +1,16 @@
-<section class="wrap values">
-  {%- for block in section.blocks -%}
-  <div class="value" {{ block.shopify_attributes }}>
-    {%- render 'icon', name: block.settings.icon -%}
-    <div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></div>
+<section class="page-width" style="padding-top:clamp(20px,3vw,32px)">
+  <div class="values">
+    {%- for block in section.blocks -%}
+    <div class="value" {{ block.shopify_attributes }}>
+      {%- render 'icon', name: block.settings.icon, color: '#8A5A3C' -%}
+      <div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></div>
+    </div>
+    {%- endfor -%}
   </div>
-  {%- endfor -%}
 </section>
 {% schema %}
 {"name":"Vantagens","blocks":[{"type":"value","name":"Vantagem","settings":[
-{"type":"select","id":"icon","label":"Ícone","options":[{"value":"leaf","label":"Folha"},{"value":"home","label":"Casa"},{"value":"truck","label":"Envio"},{"value":"return","label":"Trocas"}],"default":"leaf"},
+{"type":"select","id":"icon","label":"Ícone","options":[{"value":"leaf","label":"Folha"},{"value":"home","label":"Casa"},{"value":"truck","label":"Envio"},{"value":"return","label":"Trocas"},{"value":"heart","label":"Coração"}],"default":"leaf"},
 {"type":"text","id":"title","label":"Título"},{"type":"text","id":"text","label":"Texto"}]}],
 "max_blocks":4,"presets":[{"name":"Vantagens"}]}
 {% endschema %}

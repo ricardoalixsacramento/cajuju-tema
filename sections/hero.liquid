@@ -1,17 +1,21 @@
 <section class="hero">
-  <div class="hero__box">
+  <div class="hero__media">
     {%- if section.settings.image -%}
-      {{ section.settings.image | image_url: width: 2000 | image_tag: class: 'hero__img', alt: section.settings.image.alt, loading: 'eager', widths: '750,1100,1500,2000' }}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: alt: section.settings.image.alt, loading: 'eager', fetchpriority: 'high', widths: '600,900,1200,1600,2000,2400', sizes: '100vw' }}
     {%- else -%}
-      <img class="hero__img" src="{{ 'hero.jpg' | asset_url }}" alt="Bebé com romper de gola de folhos sentada numa manta azul" width="1600" height="900">
+      <img src="{{ 'hero.jpg' | asset_url }}" alt="Bebé com romper de gola de folhos sentada numa manta azul" width="1600" height="900" loading="eager" fetchpriority="high">
     {%- endif -%}
-    <div class="hero__text">
-      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
-      <h1>{{ section.settings.title }}</h1>
-      <p class="sub">{{ section.settings.text }}</p>
-      <div class="row">
-        <a class="btn btn--primary" href="{{ section.settings.btn1_link | default: routes.all_products_collection_url }}">{{ section.settings.btn1 }}</a>
-        {%- if section.settings.btn2 != blank -%}<a class="btn btn--light" href="{{ section.settings.btn2_link | default: '/pages/a-cajuju' }}">{{ section.settings.btn2 }}</a>{%- endif -%}
+  </div>
+  <div class="hero__content">
+    <div class="page-width" style="width:100%">
+      <div class="hero__card">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h1>{{ section.settings.title }}</h1>
+        <p class="sub">{{ section.settings.text }}</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="{{ section.settings.btn1_link | default: routes.all_products_collection_url }}">{{ section.settings.btn1 }}</a>
+          {%- if section.settings.btn2 != blank -%}<a class="btn btn--light" href="{{ section.settings.btn2_link | default: '/pages/a-cajuju' }}">{{ section.settings.btn2 }}</a>{%- endif -%}
+        </div>
       </div>
     </div>
   </div>

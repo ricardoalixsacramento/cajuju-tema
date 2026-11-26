@@ -1,11 +1,11 @@
-<section class="wrap section">
+<section class="page-width section">
   <div class="story">
-    {%- if section.settings.image -%}{{ section.settings.image | image_url: width: 1200 | image_tag: class: 'story__img', loading: 'lazy' }}{%- else -%}<img class="story__img" src="{{ 'romper-deitada.jpg' | asset_url }}" alt="Bebé deitada numa manta azul" loading="lazy" width="800" height="1000">{%- endif -%}
+    <div class="story__media">{%- if section.settings.image -%}{{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '600,900,1200,1400', sizes: '(min-width: 800px) 55vw, 100vw' }}{%- else -%}<img src="{{ 'romper-deitada.jpg' | asset_url }}" alt="Bebé deitada numa manta azul" loading="lazy" width="800" height="1000">{%- endif -%}</div>
     <div class="story__text">
       <p class="eyebrow">{{ section.settings.eyebrow }}</p>
       <h2>{{ section.settings.title }}</h2>
       <p>{{ section.settings.text }}</p>
-      {%- if section.settings.btn != blank -%}<a class="btn btn--dark" style="align-self:flex-start" href="{{ section.settings.btn_link | default: '/pages/a-cajuju' }}">{{ section.settings.btn }}</a>{%- endif -%}
+      {%- if section.settings.btn != blank -%}<div><a class="btn btn--dark" href="{{ section.settings.btn_link | default: '/pages/a-cajuju' }}">{{ section.settings.btn }}</a></div>{%- endif -%}
     </div>
   </div>
 </section>
@@ -14,7 +14,7 @@
 {"type":"image_picker","id":"image","label":"Imagem"},
 {"type":"text","id":"eyebrow","label":"Etiqueta","default":"A nossa história"},
 {"type":"text","id":"title","label":"Título","default":"Pequenas peças, feitas com tempo"},
-{"type":"textarea","id":"text","label":"Texto","default":"A Cajuju nasceu da vontade de vestir os bebés com o que é simples e verdadeiro: tecidos macios, cores calmas e detalhes que fazem sorrir — uma gola de folhos, um padrão de cenouras, cerejas pequeninas. Cada peça é feita em Portugal e pensada para durar, para um dia passar ao irmão mais novo."},
+{"type":"textarea","id":"text","label":"Texto","default":"A Cajuju nasceu da vontade de vestir os bebés com o que é simples e verdadeiro: tecidos macios, cores calmas e detalhes que fazem sorrir — um padrão de cenouras, mirtilos, pequenas andorinhas. Cada peça é feita em Portugal e pensada para durar, para um dia passar ao irmão mais novo."},
 {"type":"text","id":"btn","label":"Botão","default":"Conhecer a Cajuju"},{"type":"url","id":"btn_link","label":"Link"}],
 "presets":[{"name":"História da marca"}]}
 {% endschema %}

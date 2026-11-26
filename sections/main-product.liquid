@@ -1,50 +1,60 @@
 {%- assign current = product.selected_or_first_available_variant -%}
-<section class="wrap product">
-  <div class="product__media">
-    {%- assign first = current.featured_media | default: product.featured_media -%}
-    {%- if first -%}<img class="product__main" data-main-img src="{{ first | image_url: width: 1400 }}" alt="{{ product.title | escape }}" width="1400" height="1750">{%- else -%}<div class="product__main"></div>{%- endif -%}
-    {%- if product.media.size > 1 -%}
-    <div class="thumbs">
-      {%- for media in product.media limit: 8 -%}
-      <button type="button" class="thumb{% if media.id == first.id %} is-active{% endif %}" data-thumb data-src="{{ media | image_url: width: 1400 }}" aria-label="Ver imagem {{ forloop.index }}">{{ media | image_url: width: 300 | image_tag: alt: '', loading: 'lazy' }}</button>
+<section class="page-width product">
+  <div class="page-width-bleed">
+    <div class="gallery" data-gallery>
+      {%- for media in product.media limit: 10 -%}
+        {%- if forloop.first -%}{%- assign ld = 'eager' -%}{%- else -%}{%- assign ld = 'lazy' -%}{%- endif -%}
+        <div class="gallery__item">{{ media | image_url: width: 1600 | image_tag: loading: ld, widths: '400,600,800,1000,1300,1600', sizes: '(min-width: 900px) 55vw, 100vw', alt: media.alt | default: product.title }}</div>
+      {%- else -%}
+        <div class="gallery__item" style="display:flex;align-items:center;justify-content:center;color:var(--muted)">Foto em breve</div>
       {%- endfor -%}
     </div>
-    {%- endif -%}
+    {%- if product.media.size > 1 -%}<div class="gallery__dots" data-dots aria-hidden="true">{%- for media in product.media limit: 10 -%}<span{% if forloop.first %} class="is-active"{% endif %}></span>{%- endfor -%}</div>{%- endif -%}
   </div>
   <div class="product__info">
-    <p class="crumbs"><a href="{{ routes.root_url }}">Início</a>{% if collection %} / <a href="{{ collection.url }}">{{ collection.title }}</a>{% endif %}</p>
+    <nav class="crumbs" aria-label="Caminho"><a href="{{ routes.root_url }}">Início</a>{% if collection %} / <a href="{{ collection.url }}">{{ collection.title }}</a>{% endif %}</nav>
     <h1>{{ product.title }}</h1>
     <p class="product__price" data-price>{{ current.price | money }}</p>
-    <div class="product__desc rte">{{ product.description }}</div>
-    {%- form 'product', product -%}
+    {%- form 'product', product, id: 'product-form' -%}
       {%- if product.has_only_default_variant -%}
         <input type="hidden" name="id" value="{{ current.id }}">
       {%- else -%}
       <fieldset class="sizes">
-        <legend><span>{{ product.options.first }}: <span data-size-label>{{ current.title }}</span></span>{% if section.settings.size_link != blank %}<a class="link-u" style="font-weight:600;border-width:1px" href="{{ section.settings.size_link }}">Guia de tamanhos</a>{% endif %}</legend>
+        <legend><span>{{ product.options.first }}: <span data-size-label>{{ current.title }}</span></span>{% if section.settings.size_link != blank %}<a class="link" style="font-weight:600;font-size:.9rem" href="{{ section.settings.size_link }}">Guia de tamanhos</a>{% endif %}</legend>
+        <div class="sizes__list">
         {%- for variant in product.variants -%}
-        <label class="size"><input type="radio" name="id" value="{{ variant.id }}" data-variant data-title="{{ variant.title | escape }}" data-price="{{ variant.price | money | escape }}"{% if variant.id == current.id %} checked{% endif %}{% unless variant.available %} disabled{% endunless %}><span>{{ variant.title }}</span></label>
+          <label class="size"><input type="radio" name="id" value="{{ variant.id }}" data-variant data-title="{{ variant.title | escape }}" data-price="{{ variant.price | money | escape }}"{% if variant.id == current.id %} checked{% endif %}{% unless variant.available %} disabled{% endunless %}><span>{{ variant.title }}</span></label>
         {%- endfor -%}
+        </div>
       </fieldset>
       {%- endif -%}
-      <div class="buy" style="margin-top:22px">
-        <div class="qty"><button type="button" data-qty="-1" aria-label="Menos">−</button><label class="vh" for="qty">Quantidade</label><input id="qty" type="number" name="quantity" value="1" min="1"><button type="button" data-qty="1" aria-label="Mais">+</button></div>
-        <button class="btn btn--primary" type="submit"{% unless product.available %} disabled{% endunless %}>{% if product.available %}Adicionar ao carrinho{% else %}Esgotado{% endif %}</button>
+      <div class="buy" style="margin-top:20px">
+        <div class="qty"><button type="button" data-qty="-1" aria-label="Menos">−</button><label class="vh" for="qty">Quantidade</label><input id="qty" type="number" name="quantity" value="1" min="1" inputmode="numeric"><button type="button" data-qty="1" aria-label="Mais">+</button></div>
+        <button class="btn btn--primary" type="submit" data-buy{% unless product.available %} disabled{% endunless %}>{% if product.available %}Adicionar ao carrinho{% else %}Esgotado{% endif %}</button>
       </div>
     {%- endform -%}
-    <div class="badges"><div>{{ section.settings.badge1 }}</div><div>{{ section.settings.badge2 }}</div><div>{{ section.settings.badge3 }}</div></div>
+    <div class="product__desc rte">{{ product.description }}</div>
+    <div class="badges">
+      <div>{% render 'icon', name: 'home', color: '#8A5A3C' %}{{ section.settings.badge1 }}</div>
+      <div>{% render 'icon', name: 'leaf', color: '#8A5A3C' %}{{ section.settings.badge2 }}</div>
+      <div>{% render 'icon', name: 'return', color: '#8A5A3C' %}{{ section.settings.badge3 }}</div>
+    </div>
     <div class="acc">
       {%- for block in section.blocks -%}
-      <details {{ block.shopify_attributes }}{% if forloop.first %} open{% endif %}><summary>{{ block.settings.heading }}</summary><div class="rte">{{ block.settings.content }}</div></details>
+      <details {{ block.shopify_attributes }}><summary>{{ block.settings.heading }}</summary><div class="rte">{{ block.settings.content }}</div></details>
       {%- endfor -%}
     </div>
   </div>
 </section>
+<div class="sticky-buy" data-sticky-buy aria-hidden="true">
+  <div style="display:flex;flex-direction:column;line-height:1.2;min-width:0"><span style="font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ product.title }}</span><strong data-price>{{ current.price | money }}</strong></div>
+  <button class="btn btn--primary" type="submit" form="product-form" tabindex="-1"{% unless product.available %} disabled{% endunless %}>Adicionar</button>
+</div>
 {% schema %}
 {"name":"Produto","settings":[
 {"type":"text","id":"size_link","label":"Link do guia de tamanhos","default":"#guia"},
 {"type":"text","id":"badge1","label":"Selo 1","default":"Feito em Portugal"},
-{"type":"text","id":"badge2","label":"Selo 2","default":"Tamanhos 1–12 meses"},
+{"type":"text","id":"badge2","label":"Selo 2","default":"Tecidos macios"},
 {"type":"text","id":"badge3","label":"Selo 3","default":"Trocas fáceis"}],
 "blocks":[{"type":"collapsible","name":"Separador","settings":[{"type":"text","id":"heading","label":"Título"},{"type":"richtext","id":"content","label":"Conteúdo"}]}]}
 {% endschema %}

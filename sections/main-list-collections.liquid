@@ -1,5 +1,5 @@
-<section class="wrap page-head"><h1>Coleções</h1></section>
-<section class="wrap" style="padding-bottom:64px"><div class="grid-products">
+<section class="page-width page-head"><h1>Coleções</h1></section>
+<section class="page-width" style="padding-bottom:64px"><div class="grid-products">
 {%- for collection in collections -%}{%- if collection.products_count > 0 -%}
 <a class="card" href="{{ collection.url }}">{%- if collection.featured_image -%}{{ collection.featured_image | image_url: width: 800 | image_tag: class: 'card__img', loading: 'lazy' }}{%- else -%}<div class="card__img"></div>{%- endif -%}<h3>{{ collection.title }}</h3></a>
 {%- endif -%}{%- endfor -%}

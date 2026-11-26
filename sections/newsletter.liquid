@@ -1,10 +1,10 @@
-<section class="wrap section">
+<section class="page-width section">
   <div class="newsletter">
     <h2>{{ section.settings.title }}</h2>
     <p>{{ section.settings.text }}</p>
     {%- form 'customer', id: 'newsletter' -%}
       <input type="hidden" name="contact[tags]" value="newsletter">
-      {%- if form.posted_successfully? -%}<p role="status" style="width:100%">Obrigado! Já faz parte da família Cajuju.</p>{%- endif -%}
+      {%- if form.posted_successfully? -%}<p role="status" style="width:100%;font-weight:700">Obrigado! Já faz parte da família Cajuju.</p>{%- endif -%}
       <label class="vh" for="nl-email">Email</label>
       <input class="field" id="nl-email" type="email" name="contact[email]" placeholder="O seu email" required autocomplete="email">
       <button class="btn btn--dark" type="submit">Subscrever</button>

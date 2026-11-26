@@ -1,7 +1,11 @@
 <a class="card" href="{{ product.url }}">
-  {%- if product.featured_media -%}
-    {{ product.featured_media | image_url: width: 800 | image_tag: class: 'card__img', loading: 'lazy', widths: '400,600,800', alt: product.title }}
-  {%- else -%}<div class="card__img"></div>{%- endif -%}
-  <h3>{{ product.title }}</h3>
-  <p class="price">{% if product.price_varies %}Desde {% endif %}{{ product.price | money }}{% if product.compare_at_price > product.price %}<span class="compare">{{ product.compare_at_price | money }}</span>{% endif %}</p>
+  <div class="card__media">
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', widths: '300,450,600,900', sizes: '(min-width: 1000px) 25vw, (min-width: 700px) 33vw, 50vw', alt: product.title }}
+      {%- if product.media.size > 1 -%}{{ product.media[1] | image_url: width: 900 | image_tag: class: 'img-2', loading: 'lazy', widths: '300,450,600,900', sizes: '(min-width: 1000px) 25vw, (min-width: 700px) 33vw, 50vw', alt: '' }}{%- endif -%}
+    {%- else -%}<span class="card__placeholder">Foto em breve</span>{%- endif -%}
+    {%- unless product.available -%}<span class="card__badge">Esgotado</span>{%- endunless -%}
+  </div>
+  <h3 class="card__title">{{ product.title }}</h3>
+  <p class="card__price">{% if product.price_varies %}Desde {% endif %}{{ product.price | money }}{% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif %}</p>
 </a>

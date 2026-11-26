@@ -1,8 +1,10 @@
-<section class="wrap section">
-  <div style="text-align:center;margin-bottom:24px"><h2 style="font-size:32px"><a href="{{ section.settings.link | default: 'https://instagram.com/cajujubaby' }}">{{ section.settings.title }}</a></h2><p class="muted" style="margin:8px 0 0">{{ section.settings.text }}</p></div>
+<section class="page-width section">
+  <div class="section-head"><div><h2>{{ section.settings.title }}</h2><p>{{ section.settings.text }}</p></div><a class="link" href="{{ section.settings.link | default: 'https://instagram.com/cajujubaby' }}">Seguir no Instagram</a></div>
   <div class="insta">
     {%- for block in section.blocks -%}
-      {%- if block.settings.image -%}{{ block.settings.image | image_url: width: 500 | image_tag: loading: 'lazy' }}{%- else -%}<img src="{{ block.settings.fallback | asset_url }}" alt="" loading="lazy" width="800" height="1000">{%- endif -%}
+      <a href="{{ section.settings.link | default: 'https://instagram.com/cajujubaby' }}" aria-label="Instagram Cajuju">
+      {%- if block.settings.image -%}{{ block.settings.image | image_url: width: 500 | image_tag: loading: 'lazy', widths: '250,500', sizes: '(min-width: 700px) 20vw, 33vw', alt: '' }}{%- else -%}<img src="{{ block.settings.fallback | asset_url }}" alt="" loading="lazy" width="500" height="500">{%- endif -%}
+      </a>
     {%- endfor -%}
   </div>
 </section>
@@ -12,5 +14,5 @@
 {"type":"text","id":"text","label":"Texto","default":"Novidades em primeira mão e pequenos momentos das famílias Cajuju."},
 {"type":"url","id":"link","label":"Link"}],
 "blocks":[{"type":"photo","name":"Foto","settings":[{"type":"image_picker","id":"image","label":"Imagem"},{"type":"text","id":"fallback","label":"Imagem do tema (se vazio)","default":"romper-detalhe.jpg"}]}],
-"max_blocks":6,"presets":[{"name":"Instagram"}]}
+"max_blocks":5,"presets":[{"name":"Instagram"}]}
 {% endschema %}
