@@ -1,5 +1,5 @@
 {%- if request.page_type != 'page' or page.handle == 'a-cajuju' or page.template_suffix == 'sobre' -%}
-<section class="narrow faq section">
+<section class="narrow faq section" id="perguntas">
   <h2>{{ section.settings.title }}</h2>
   <div class="acc">
     {%- for block in section.blocks -%}<details {{ block.shopify_attributes }}><summary>{{ block.settings.q }}</summary><div class="rte">{{ block.settings.a }}</div></details>{%- endfor -%}

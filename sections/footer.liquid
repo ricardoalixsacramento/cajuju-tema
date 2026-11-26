@@ -1,26 +1,49 @@
 <footer class="site-footer">
   <div class="page-width footer">
-    <div class="footer__brand"><span class="header__logo" style="font-size:1.8rem">cajuju</span><p>{{ section.settings.tagline }}</p></div>
-    {%- for block in section.blocks -%}
-      {%- assign menu = linklists[block.settings.menu] -%}
-      <div class="footer__col" {{ block.shopify_attributes }}><h3>{{ block.settings.title }}</h3>
-        <ul>{%- for link in menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}</ul>
-      </div>
-    {%- endfor -%}
+    <div class="footer__brand"><span class="header__logo" style="font-size:1.8rem">cajuju</span><p>{{ section.settings.tagline }}</p>
+      <a class="footer__ig" href="{{ section.settings.instagram | default: 'https://instagram.com/cajujubaby' }}" target="_blank" rel="noopener">@cajujubaby no Instagram</a>
+    </div>
+    {%- if section.settings.store_menus and section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign menu = linklists[block.settings.menu] -%}
+        <div class="footer__col" {{ block.shopify_attributes }}><h3>{{ block.settings.title }}</h3>
+          <ul>{%- for link in menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}</ul>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <div class="footer__col"><h3>Loja</h3><ul>
+        <li><a href="/collections/all/presentes">Caixas de presente</a></li>
+        <li><a href="{{ routes.all_products_collection_url }}">Todas as peças</a></li>
+        {%- assign cols = 'bodies,babygrows,conjuntos,acessorios' | split: ',' -%}
+        {%- for h in cols -%}{%- assign c = collections[h] -%}{%- if c.id -%}<li><a href="{{ c.url }}">{{ c.title }}</a></li>{%- endif -%}{%- endfor -%}
+      </ul></div>
+      <div class="footer__col"><h3>Ajuda</h3><ul>
+        <li><a href="/pages/guia-de-tamanhos">Guia de tamanhos</a></li>
+        <li><a href="/pages/cuidar-das-pecas">Cuidar das peças</a></li>
+        <li><a href="/pages/a-cajuju#perguntas">Envios, trocas e devoluções</a></li>
+        <li><a href="/pages/a-cajuju">A Cajuju</a></li>
+        <li><a href="/pages/contact">Contacto</a></li>
+      </ul></div>
+    {%- endif -%}
     <div class="footer__col"><h3>Contactos</h3><ul>
       {%- if section.settings.email != blank -%}<li><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></li>{%- endif -%}
-      <li><a href="{{ section.settings.instagram | default: 'https://instagram.com/cajujubaby' }}">Instagram</a></li>
-      <li><a href="https://www.livroreclamacoes.pt">Livro de Reclamações</a></li>
+      <li><a href="/pages/contact">Escreve-nos</a></li>
+      <li><a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações</a></li>
+      {%- for policy in shop.policies -%}<li><a href="{{ policy.url }}">{{ policy.title }}</a></li>{%- endfor -%}
     </ul></div>
   </div>
-  <div class="page-width footer__bottom"><span>© {{ 'now' | date: '%Y' }} {{ shop.name }}{% if section.settings.legal != blank %} · {{ section.settings.legal }}{% endif %}</span><span>Feito em Portugal</span></div>
+  <div class="page-width footer__bottom">
+    <span>© {{ 'now' | date: '%Y' }} Cajuju{% if section.settings.legal != blank %} · {{ section.settings.legal }}{% endif %} · Feito em Portugal</span>
+    {%- if shop.enabled_payment_types.size > 0 -%}<ul class="footer__pay" aria-label="Métodos de pagamento">{%- for t in shop.enabled_payment_types -%}<li>{{ t | payment_type_svg_tag }}</li>{%- endfor -%}</ul>{%- endif -%}
+  </div>
 </footer>
 {% schema %}
 {"name":"Rodapé","settings":[
 {"type":"text","id":"tagline","label":"Frase","default":"Roupa de bebé feita em Portugal, com tecidos macios e detalhes que fazem sorrir."},
 {"type":"text","id":"email","label":"Email"},
 {"type":"url","id":"instagram","label":"Instagram"},
-{"type":"text","id":"legal","label":"Empresa · NIF"}],
+{"type":"text","id":"legal","label":"Empresa · NIF"},
+{"type":"checkbox","id":"store_menus","label":"Usar menus da Shopify","default":false}],
 "blocks":[{"type":"menu","name":"Coluna de links","settings":[{"type":"text","id":"title","label":"Título","default":"Ajuda"},{"type":"link_list","id":"menu","label":"Menu","default":"footer"}]}],
 "max_blocks":2}
 {% endschema %}

@@ -319,3 +319,30 @@ th{font-weight:700;background:var(--bg)}
 .drawer__panel .nav-item{display:block}
 .drawer__panel .nav-sub{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 8px 14px;background:none;min-width:0}
 .drawer__panel .nav-sub a{font-size:1rem;font-weight:600;padding:9px 0;display:flex;align-items:center;gap:10px;border-bottom:0}
+
+/* 1.5 — anúncio rotativo, cartões, carrosséis, rodapé, aviso de carrinho */
+.announcement__track{display:inline}
+@media(max-width:699px){
+  .announcement{position:relative;height:2.4em;overflow:hidden;padding:0 var(--gutter)}
+  .announcement__sep{display:none}
+  .announcement__msg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;animation:ann calc(var(--n) * 4s) infinite;animation-delay:calc(var(--i) * 4s)}
+  .announcement__track[style*="--n:1"] .announcement__msg{opacity:1;animation:none}
+}
+@keyframes ann{0%{opacity:0;transform:translateY(6px)}4%,30%{opacity:1;transform:none}34%,100%{opacity:0;transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.announcement__msg{animation:none!important}.announcement__msg:first-child{opacity:1}}
+.card__title{display:flex;flex-direction:column;gap:2px;font-family:'Nunito',sans-serif;font-weight:700}
+.card__sub{font-family:'Nunito Sans',sans-serif;font-weight:400;color:var(--muted);font-size:.88em}
+@media(max-width:699px){
+  .grid-products--scroll{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter) 6px;scroll-padding:0 var(--gutter);scrollbar-width:none}
+  .grid-products--scroll::-webkit-scrollbar{display:none}
+  .grid-products--scroll>.card{flex:0 0 72%;scroll-snap-align:start}
+}
+.footer__ig{display:inline-block;margin-top:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.footer__pay{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0}
+.footer__pay svg{width:38px;height:24px}
+.footer__col a:hover{color:var(--accent)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;visibility:hidden;z-index:80;background:var(--text);color:var(--bg);border-radius:16px;padding:14px 16px 14px 18px;display:flex;align-items:center;gap:16px;box-shadow:0 18px 40px rgba(40,30,25,.25);transition:all .3s ease;width:max-content;max-width:calc(100vw - 24px);font-size:.95rem}
+.toast.is-on{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.toast a{color:var(--bg);font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.toast img{width:44px;height:55px;object-fit:cover;border-radius:8px}
+.btn.is-loading{opacity:.7;pointer-events:none}

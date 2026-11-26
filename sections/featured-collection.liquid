@@ -2,9 +2,20 @@
 {%- if coll == blank -%}{%- assign coll = collections.all -%}{%- endif -%}
 <section class="page-width section">
   <div class="section-head"><div><h2>{{ section.settings.title }}</h2>{% if section.settings.text != blank %}<p>{{ section.settings.text }}</p>{% endif %}</div><a class="link" href="{{ coll.url | default: routes.all_products_collection_url }}">Ver tudo</a></div>
-  <div class="grid-products">
+  <div class="grid-products grid-products--scroll">
     {%- if coll.products_count > 0 -%}
-      {%- for product in coll.products limit: section.settings.limit -%}{%- render 'product-card', product: product -%}{%- endfor -%}
+      {%- assign shown = 0 -%}{%- assign seen = '' -%}
+      {%- for product in coll.products -%}
+        {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
+        {%- assign model = product.title | split: ' ' | first -%}
+        {%- assign key = '|' | append: model | append: '|' -%}
+        {%- unless product.tags contains 'presentes' or seen contains key -%}{%- if product.featured_media -%}{%- render 'product-card', product: product -%}{%- assign seen = seen | append: key -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}{%- endunless -%}
+      {%- endfor -%}
+      {%- for product in coll.products -%}
+        {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
+        {%- assign model = product.title | split: ' ' | first -%}{%- assign key = '|' | append: model | append: '|' -%}
+        {%- unless seen contains key or product.tags contains 'presentes' -%}{%- render 'product-card', product: product -%}{%- assign seen = seen | append: key -%}{%- assign shown = shown | plus: 1 -%}{%- endunless -%}
+      {%- endfor -%}
     {%- else -%}
       {%- assign demo = 'cat-bodies.jpg|cat-babygrows.jpg|cat-conjuntos.jpg|cat-acessorios.jpg' | split: '|' -%}
       {%- for img in demo -%}

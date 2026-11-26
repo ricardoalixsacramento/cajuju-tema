@@ -14,7 +14,7 @@
     <div class="header__tools">
       <a class="icon-btn" href="{{ routes.search_url }}" aria-label="Procurar">{% render 'icon', name: 'search' %}</a>
       {%- if shop.customer_accounts_enabled -%}<a class="icon-btn hide-mobile" href="{{ routes.account_url }}" aria-label="Conta">{% render 'icon', name: 'account' %}</a>{%- endif -%}
-      <a class="icon-btn" href="{{ routes.cart_url }}" aria-label="Carrinho, {{ cart.item_count }} artigos">{% render 'icon', name: 'bag' %}{% if cart.item_count > 0 %}<span class="cart-count">{{ cart.item_count }}</span>{% endif %}</a>
+      <a class="icon-btn" data-cart-link href="{{ routes.cart_url }}" aria-label="Carrinho, {{ cart.item_count }} artigos">{% render 'icon', name: 'bag' %}{% if cart.item_count > 0 %}<span class="cart-count">{{ cart.item_count }}</span>{% endif %}</a>
     </div>
   </header>
 </div>

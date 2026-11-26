@@ -1,7 +1,7 @@
 {%- assign tag = section.settings.tag | default: 'presentes' -%}
 <section class="page-width section" id="presentes">
   <div class="section-head"><div><p class="eyebrow">{{ section.settings.eyebrow }}</p><h2>{{ section.settings.title }}</h2>{% if section.settings.text != blank %}<p>{{ section.settings.text }}</p>{% endif %}</div><a class="link" href="/collections/all/{{ tag }}">Ver todas</a></div>
-  <div class="grid-products grid-products--boxes">
+  <div class="grid-products grid-products--boxes grid-products--scroll">
     {%- assign shown = 0 -%}
     {%- for product in collections.all.products -%}
       {%- if product.tags contains tag and shown < 4 -%}

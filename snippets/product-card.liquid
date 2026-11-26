@@ -6,6 +6,6 @@
     {%- else -%}{%- render 'pattern-fallback', product: product -%}{%- endif -%}
     {%- if product.available == false -%}<span class="card__badge">Esgotado</span>{%- elsif product.tags contains 'presentes' -%}{%- capture sv -%}{%- render 'box-saving', product: product -%}{%- endcapture -%}{%- assign sv = sv | strip | plus: 0 -%}<span class="card__badge">{% if sv > 0 %}Poupas {{ sv | money }}{% else %}{{ badge | default: 'Caixa presente' }}{% endif %}</span>{%- elsif badge -%}<span class="card__badge">{{ badge }}</span>{%- endif -%}
   </div>
-  <h3 class="card__title">{{ product.title }}</h3>
+  {%- assign tparts = product.title | split: ' — ' -%}<h3 class="card__title">{{ tparts.first }}{%- if tparts.size > 1 -%}<span class="card__sub">{{ tparts.last }}</span>{%- endif -%}</h3>
   <p class="card__price">{% if product.price_varies %}Desde {% endif %}{{ product.price | money }}{% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif %}</p>
 </a>
