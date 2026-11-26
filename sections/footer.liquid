@@ -33,7 +33,7 @@
     </ul></div>
   </div>
   <div class="page-width footer__bottom">
-    <span>© {{ 'now' | date: '%Y' }} Cajuju{% if section.settings.legal != blank %} · {{ section.settings.legal }}{% endif %} · Feito em Portugal</span>
+    <span class="footer__copy"><img src="{{ 'simbolo-cajuju.png' | asset_url }}" alt="" width="334" height="357" loading="lazy">© {{ 'now' | date: '%Y' }} Cajuju{% if section.settings.legal != blank %} · {{ section.settings.legal }}{% endif %} · Feito em Portugal</span>
     {%- if shop.enabled_payment_types.size > 0 -%}<ul class="footer__pay" aria-label="Métodos de pagamento">{%- for t in shop.enabled_payment_types -%}<li>{{ t | payment_type_svg_tag }}</li>{%- endfor -%}</ul>{%- endif -%}
   </div>
 </footer>

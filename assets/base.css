@@ -351,3 +351,8 @@ th{font-weight:700;background:var(--bg)}
 .header__logo--drawer .logo-img{height:32px}
 .header__logo--footer{justify-self:start}
 .header__logo--footer .logo-img{height:46px}
+
+.symbol{display:block;width:44px;height:auto;margin:0 auto 14px}
+.about-intro .symbol{margin:0 0 18px}
+.footer__copy{display:inline-flex;align-items:center;gap:8px}
+.footer__copy img{width:18px;height:auto;opacity:.75}

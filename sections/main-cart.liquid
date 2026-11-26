@@ -41,7 +41,7 @@
     </div>
   </form>
   {%- else -%}
-  <p class="muted" style="margin-bottom:20px">O teu carrinho está vazio.</p>
+  <img class="symbol" style="margin:8px 0 16px" src="{{ 'simbolo-cajuju.png' | asset_url }}" alt="" width="334" height="357" loading="lazy"><p class="muted" style="margin-bottom:20px">O teu carrinho está vazio. Que tal começar por um presente?</p>
   <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn--primary" href="/collections/all/presentes">Ver presentes</a><a class="btn btn--light" href="{{ routes.all_products_collection_url }}">Ver todas as peças</a></div>
   {%- endif -%}
 </section>
