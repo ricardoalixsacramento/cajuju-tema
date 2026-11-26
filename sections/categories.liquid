@@ -6,7 +6,6 @@
       {%- assign url = c.url | default: routes.all_products_collection_url -%}
       <a class="category" href="{{ url }}" {{ block.shopify_attributes }}>
         {%- if block.settings.image -%}{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400,600,800', sizes: '(min-width: 900px) 25vw, 50vw', alt: '' }}
-        {%- elsif c.featured_image -%}{{ c.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400,600,800', sizes: '(min-width: 900px) 25vw, 50vw', alt: '' }}
         {%- else -%}<img src="{{ block.settings.fallback | asset_url }}" alt="" loading="lazy" width="800" height="1000">{%- endif -%}
         <span class="category__label">{{ block.settings.label | default: c.title }}{% render 'icon', name: 'arrow', size: 18 %}</span>
       </a>
