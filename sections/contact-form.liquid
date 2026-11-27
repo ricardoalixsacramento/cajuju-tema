@@ -2,6 +2,7 @@
 <section class="narrow" style="padding-top:clamp(28px,4vw,56px)">
   <h1 style="font-size:var(--h1);margin-bottom:12px">{{ page.title }}</h1>
   {%- if page.content != blank -%}<div class="rte muted" style="margin-bottom:24px">{{ page.content }}</div>{%- endif -%}
+  <p class="muted" style="margin:-4px 0 20px">Também nos podes escrever para <a href="mailto:hello@cajuju.pt" style="text-decoration:underline">hello@cajuju.pt</a> — respondemos em 1 dia útil.</p>
   {%- form 'contact', class: 'form-stack', style: 'margin:0;max-width:560px' -%}
     {%- if form.posted_successfully? -%}<p role="status" class="includes" style="list-style:none">Obrigado! Recebemos a tua mensagem e respondemos assim que possível.</p>{%- endif -%}
     {%- if form.errors -%}<div class="errors">{{ form.errors | default_errors }}</div>{%- endif -%}
