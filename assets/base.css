@@ -423,3 +423,10 @@ th{font-weight:700;background:var(--bg)}
 .lb__tip{text-align:center;color:var(--muted);font-size:.8rem;margin:8px 0 14px}
 @media(max-width:699px){.lb__nav{display:none}}
 body.lb-open{overflow:hidden}
+@media(min-width:900px){
+  .pgal{flex-direction:row-reverse;align-items:flex-start;gap:14px}
+  .pgal__stage{flex:1;min-width:0}
+  .pgal__slide{aspect-ratio:4/5;max-height:calc(100vh - var(--header-h) - 56px)}
+  .pgal__thumbs{flex-direction:column;overflow-y:auto;overflow-x:hidden;max-height:calc(100vh - var(--header-h) - 56px);width:84px;flex:0 0 84px}
+  .pgal__thumb{width:78px}
+}
