@@ -91,6 +91,7 @@
   if(vj){
     var variants=JSON.parse(vj.textContent),idIn=document.querySelector('[data-variant-id]');
     var money=function(c){return '€'+(c/100).toFixed(2).replace('.',',')};
+    var hadVariant=/[?&]variant=/.test(location.search);
     var sync=function(initial){
       var sel=[];document.querySelectorAll('[data-opt-index]').forEach(function(fs){var c=fs.querySelector('input:checked');sel[+fs.dataset.optIndex]=c?c.value:null;document.querySelector('[data-opt-label="'+fs.dataset.optIndex+'"]').textContent=c?c.value:''});
       var v=variants.find(function(x){return x.options.every(function(o,i){return o===sel[i]})});
@@ -98,7 +99,7 @@
       if(v){idIn.value=v.id;document.querySelectorAll('[data-price]').forEach(function(p){p.textContent=money(v.price)});
         btns.forEach(function(b){b.disabled=!v.available;if(b.hasAttribute('data-buy'))b.textContent=v.available?'Adicionar ao carrinho':'Esgotado'});
         var u=new URL(location.href);u.searchParams.set('variant',v.id);history.replaceState(null,'',u.toString());}
-      if(sel[0]){if(initial&&!/[?&]variant=/.test(location.search)){document.querySelectorAll('[data-box-pattern]').forEach(function(b){b.hidden=b.dataset.boxPattern!==sel[0]})}else showPattern(sel[0]);}
+      if(sel[0]){if(initial&&!hadVariant){document.querySelectorAll('[data-box-pattern]').forEach(function(b){b.hidden=b.dataset.boxPattern!==sel[0]})}else showPattern(sel[0]);}
     };
     document.addEventListener('change',function(e){if(e.target.matches('[data-opt]'))sync()});
     sync(true);
