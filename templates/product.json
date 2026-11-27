@@ -35,6 +35,15 @@
   "guide": {
    "type": "size-guide",
    "blocks": {
+    "r0": {
+     "type": "row",
+     "settings": {
+      "size": "0–1 M",
+      "age": "Recém-nascido até 1 mês",
+      "height": "50–56",
+      "weight": "—"
+     }
+    },
     "r1": {
      "type": "row",
      "settings": {
@@ -73,6 +82,7 @@
     }
    },
    "block_order": [
+    "r0",
     "r1",
     "r2",
     "r3",

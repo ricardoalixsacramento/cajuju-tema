@@ -65,7 +65,7 @@
             </label>
           {%- endfor -%}
           </div>
-          {%- unless is_pat -%}<p class="hint">A oferecer? Se o bebé ainda não nasceu, escolhe 1–3M; se já nasceu, um tamanho acima da idade. As trocas de tamanho são grátis durante 30 dias.</p>{%- endunless -%}
+          {%- unless is_pat -%}<p class="hint">A oferecer? O 0–1M serve até 56 cm; se o bebé ainda não nasceu, o 1–3M é a escolha mais segura. Se já nasceu, escolhe um tamanho acima da idade. As trocas de tamanho são grátis durante 30 dias.</p>{%- endunless -%}
         </fieldset>
       {%- endfor -%}
       {%- else -%}
@@ -76,7 +76,7 @@
           <label class="size"><input type="radio" name="id" value="{{ variant.id }}" data-variant data-title="{{ variant.title | escape }}" data-price="{{ variant.price | money | escape }}"{% if variant.id == current.id %} checked{% endif %}{% unless variant.available %} disabled{% endunless %}><span>{{ variant.title }}</span></label>
         {%- endfor -%}
         </div>
-        <p class="hint">A oferecer? Se o bebé ainda não nasceu, escolhe 1–3M; se já nasceu, um tamanho acima da idade. As trocas de tamanho são grátis durante 30 dias.</p>
+        <p class="hint">A oferecer? O 0–1M serve até 56 cm; se o bebé ainda não nasceu, o 1–3M é a escolha mais segura. Se já nasceu, escolhe um tamanho acima da idade. As trocas de tamanho são grátis durante 30 dias.</p>
       </fieldset>
       {%- endif -%}
       {%- if product.tags contains 'presentes' -%}{%- render 'box-contents', product: product, current: current -%}{%- endif -%}

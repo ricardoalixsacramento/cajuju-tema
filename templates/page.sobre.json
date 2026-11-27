@@ -39,7 +39,7 @@
      "type": "qa",
      "settings": {
       "q": "Que tamanho escolher para oferecer?",
-      "a": "<p>Se o bebé ainda não nasceu, escolhe 1–3M. Se já nasceu, escolhe um tamanho acima da idade. E se não servir, a troca é grátis durante 30 dias.</p>"
+      "a": "<p>Para recém-nascidos até 56 cm há o 0–1M; se o bebé ainda não nasceu, o 1–3M é a escolha mais segura. Se já nasceu, escolhe um tamanho acima da idade. E se não servir, a troca é grátis durante 30 dias.</p>"
      }
     },
     "q2": {
