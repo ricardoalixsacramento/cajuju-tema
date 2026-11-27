@@ -370,3 +370,56 @@ th{font-weight:700;background:var(--bg)}
 .swatch input:checked~.swatch__name{font-weight:800}
 .swatch__dot{background-size:260%}
 .box-items li span{min-width:0}
+
+/* 1.6 — galeria de produto */
+.page-width-bleed{min-width:0}
+@media(min-width:900px){.page-width-bleed{position:sticky;top:calc(var(--header-h) + 16px);align-self:start}}
+.pgal{display:flex;flex-direction:column;gap:12px}
+.pgal__stage{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+.pgal__track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;outline:none}
+.pgal__track::-webkit-scrollbar{display:none}
+.pgal__slide{flex:0 0 100%;margin:0;scroll-snap-align:center;aspect-ratio:4/5;position:relative;overflow:hidden}
+.pgal__open{all:unset;display:block;width:100%;height:100%;cursor:zoom-in}
+.pgal__img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease,transform-origin 0s;will-change:transform}
+.pgal__slide.is-zoom .pgal__img{transform:scale(2.1);transition:transform .2s ease}
+.pgal__nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,252,247,.92);color:var(--text);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(60,45,35,.14);opacity:0;transition:opacity .2s,background .2s;z-index:2}
+.pgal__nav--prev{left:14px}.pgal__nav--next{right:14px}
+.pgal__stage:hover .pgal__nav,.pgal__nav:focus-visible{opacity:1}
+.pgal__nav:hover{background:#fff}
+.pgal__nav[disabled]{opacity:0!important;pointer-events:none}
+.pgal__count{position:absolute;left:14px;bottom:14px;background:rgba(255,252,247,.92);border-radius:99px;padding:5px 12px;font-size:.8rem;font-weight:700;z-index:2;pointer-events:none}
+.pgal__hint{position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:6px;background:rgba(255,252,247,.92);border-radius:99px;padding:5px 12px;font-size:.78rem;color:var(--muted);z-index:2;pointer-events:none;transition:opacity .3s}
+.pgal__stage.is-zooming .pgal__hint,.pgal__stage.is-zooming .pgal__count{opacity:0}
+.pgal__hint-m{display:none}
+.pgal__thumbs{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.pgal__thumbs::-webkit-scrollbar{display:none}
+.pgal__thumb{flex:0 0 auto;width:78px;aspect-ratio:4/5;border-radius:12px;overflow:hidden;padding:0;border:0;cursor:pointer;background:var(--surface);opacity:.6;outline:2px solid transparent;outline-offset:2px;transition:opacity .2s,outline-color .2s}
+.pgal__thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pgal__thumb:hover{opacity:.9}
+.pgal__thumb.is-active{opacity:1;outline-color:var(--text)}
+@media(max-width:899px){
+  .page-width-bleed{margin:0 calc(var(--gutter) * -1)}
+  .pgal__stage{border-radius:0}
+  .pgal__nav{display:none}
+  .pgal__hint-d{display:none}.pgal__hint-m{display:inline}
+  .pgal__thumbs{padding:2px var(--gutter)}
+  .pgal__thumb{width:60px;border-radius:10px}
+}
+@media(hover:none){.pgal__open{cursor:pointer}}
+/* ecrã inteiro */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(251,248,243,.98);display:flex;flex-direction:column}
+.lb[hidden]{display:none}
+.lb__top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;position:relative;z-index:3}
+.lb__count{font-weight:700;font-size:.9rem}
+.lb__close{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;cursor:pointer;color:var(--text)}
+.lb__track{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;min-height:0}
+.lb__track::-webkit-scrollbar{display:none}
+.lb__slide{flex:0 0 100%;scroll-snap-align:center;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;touch-action:pan-x pan-y}
+.lb__slide img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in;transition:transform .25s ease;user-select:none;-webkit-user-drag:none}
+.lb__slide.is-zoom{touch-action:none}
+.lb__slide.is-zoom img{cursor:grab;transition:none}
+.lb__nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;cursor:pointer;z-index:3;color:var(--text)}
+.lb__nav--prev{left:18px}.lb__nav--next{right:18px}
+.lb__tip{text-align:center;color:var(--muted);font-size:.8rem;margin:8px 0 14px}
+@media(max-width:699px){.lb__nav{display:none}}
+body.lb-open{overflow:hidden}
