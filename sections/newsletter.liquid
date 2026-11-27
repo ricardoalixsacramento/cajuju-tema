@@ -5,7 +5,7 @@
     <p>{{ section.settings.text }}</p>
     {%- form 'customer', id: 'newsletter' -%}
       <input type="hidden" name="contact[tags]" value="newsletter">
-      {%- if form.posted_successfully? -%}<p role="status" style="width:100%;font-weight:700">Obrigado! Já faz parte da família Cajuju.</p>{%- endif -%}
+      {%- if form.posted_successfully? -%}<p role="status" style="width:100%;font-weight:700">Obrigado! Já fazes parte da família Cajuju. O teu código de 10% é <span class="code">BEMVINDO10</span> — usa-o na finalização da compra.</p>{%- endif -%}
       <label class="vh" for="nl-email">Email</label>
       <input class="field" id="nl-email" type="email" name="contact[email]" placeholder="O teu email" required autocomplete="email">
       <button class="btn btn--dark" type="submit">Subscrever</button>
@@ -14,7 +14,7 @@
 </section>
 {% schema %}
 {"name":"Newsletter","settings":[
-{"type":"text","id":"title","label":"Título","default":"Junta-te à família Cajuju"},
-{"type":"textarea","id":"text","label":"Texto","default":"Novos padrões primeiro, antes de chegarem à loja."}],
+{"type":"text","id":"title","label":"Título","default":"Junta-te à família Cajuju e ganha 10%"},
+{"type":"textarea","id":"text","label":"Texto","default":"Recebe 10% de desconto na primeira compra e conhece os novos padrões antes de todos."}],
 "presets":[{"name":"Newsletter"}]}
 {% endschema %}

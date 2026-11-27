@@ -432,3 +432,4 @@ body.lb-open{overflow:hidden}
 }
 .pgal__count{top:14px;bottom:auto}
 .pgal__hint{top:14px;bottom:auto}
+.newsletter .code{display:inline-block;background:var(--text);color:var(--bg);padding:2px 10px;border-radius:8px;letter-spacing:.06em}
