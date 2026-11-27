@@ -1,9 +1,10 @@
 <section class="hero">
-  <div class="hero__media">
+  <div class="hero__media{% if section.settings.image == blank %} hero__media--duo{% endif %}">
     {%- if section.settings.image -%}
       {{ section.settings.image | image_url: width: 2400 | image_tag: alt: section.settings.image.alt, loading: 'eager', fetchpriority: 'high', widths: '600,900,1200,1600,2000,2400', sizes: '100vw' }}
     {%- else -%}
-      <img src="{{ 'hero-andorinhas.jpg' | asset_url }}" alt="Bebé deitado com o body Hug Me Pássaros" width="1672" height="941" loading="eager" fetchpriority="high">
+      <img class="hero__img hero__img--a" src="{{ 'hero-andorinhas.jpg' | asset_url }}" alt="Bebé deitado com o body Hug Me Pássaros" width="1672" height="941" loading="eager" fetchpriority="high">
+      <img class="hero__img hero__img--b" src="{{ 'hero.jpg' | asset_url }}" alt="Bebé com romper de gola de folhos sentada numa manta azul" width="1600" height="900" loading="lazy">
     {%- endif -%}
   </div>
   <div class="hero__content">
