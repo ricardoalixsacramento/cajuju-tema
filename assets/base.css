@@ -131,7 +131,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 
 /* Story */
 .story{display:grid;grid-template-columns:1.1fr 1fr;background:var(--surface);border-radius:var(--radius-lg);overflow:hidden}
-.story__media img{width:100%;height:100%;min-height:24rem;object-fit:cover}
+.story__media img{width:100%;height:100%;min-height:24rem;max-height:600px;object-fit:cover;object-position:center 60%}
 .story__text{padding:clamp(28px,5vw,72px);display:flex;flex-direction:column;justify-content:center;gap:18px}
 .story__text h2{font-size:var(--h2)}
 .story__text p{color:var(--soft);font-size:1.05rem;line-height:1.75}

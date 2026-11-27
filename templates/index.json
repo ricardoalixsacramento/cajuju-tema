@@ -52,7 +52,8 @@
    "type": "featured-collection",
    "settings": {
     "title": "Peças em destaque",
-    "limit": 4
+    "limit": 4,
+    "exclude_type": "Sapatinhos"
    }
   },
   "story": {
@@ -65,31 +66,31 @@
     "p1": {
      "type": "photo",
      "settings": {
-      "fallback": "romper-detalhe.jpg"
+      "fallback": "p-hug-me-passaros-4.jpg"
      }
     },
     "p2": {
      "type": "photo",
      "settings": {
-      "fallback": "cenouras.jpg"
+      "fallback": "p-botieboos-mirtilos-z.jpg"
      }
     },
     "p3": {
      "type": "photo",
      "settings": {
-      "fallback": "romper-deitada.jpg"
+      "fallback": "p-hug-me-passaros-5.jpg"
      }
     },
     "p4": {
      "type": "photo",
      "settings": {
-      "fallback": "cat-acessorios.jpg"
+      "fallback": "p-kai-cogumelos-1.jpg"
      }
     },
     "p5": {
      "type": "photo",
      "settings": {
-      "fallback": "romper-packshot-c.jpg"
+      "fallback": "p-layla-limoes-1.jpg"
      }
     }
    },

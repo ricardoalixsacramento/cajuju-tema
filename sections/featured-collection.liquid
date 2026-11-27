@@ -15,12 +15,12 @@
         {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
         {%- assign model = product.title | split: ' ' | first -%}
         {%- assign key = '|' | append: model | append: '|' -%}
-        {%- unless product.tags contains 'presentes' or seen contains key -%}{%- if product.featured_media -%}{%- render 'product-card', product: product -%}{%- assign seen = seen | append: key -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}{%- endunless -%}
+        {%- unless product.tags contains 'presentes' or seen contains key or product.type == section.settings.exclude_type -%}{%- if product.featured_media -%}{%- render 'product-card', product: product -%}{%- assign seen = seen | append: key -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}{%- endunless -%}
       {%- endfor -%}
       {%- for product in coll.products -%}
         {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
         {%- assign model = product.title | split: ' ' | first -%}{%- assign key = '|' | append: model | append: '|' -%}
-        {%- unless seen contains key or product.tags contains 'presentes' -%}{%- render 'product-card', product: product -%}{%- assign seen = seen | append: key -%}{%- assign shown = shown | plus: 1 -%}{%- endunless -%}
+        {%- unless seen contains key or product.tags contains 'presentes' or product.type == section.settings.exclude_type -%}{%- render 'product-card', product: product -%}{%- assign seen = seen | append: key -%}{%- assign shown = shown | plus: 1 -%}{%- endunless -%}
       {%- endfor -%}
     {%- else -%}
       {%- assign demo = 'cat-bodies.jpg|cat-babygrows.jpg|cat-conjuntos.jpg|cat-acessorios.jpg' | split: '|' -%}
@@ -36,6 +36,7 @@
 {"type":"text","id":"text","label":"Texto"},
 {"type":"collection","id":"collection","label":"Coleção"},
 {"type":"text","id":"product_type","label":"Só produtos do tipo","info":"Ex.: Sapatinhos. Mostra todas as peças desse tipo."},
+{"type":"text","id":"exclude_type","label":"Excluir tipo"},
 {"type":"url","id":"link","label":"Link de 'Ver tudo'"},
 {"type":"range","id":"limit","label":"Nº de produtos","min":4,"max":12,"step":4,"default":4}],
 "presets":[{"name":"Produtos em destaque"}]}
