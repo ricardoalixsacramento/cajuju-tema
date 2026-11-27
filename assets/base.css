@@ -438,5 +438,5 @@ body.lb-open{overflow:hidden}
 .hero__media--duo{position:relative}
 .hero__media--duo .hero__img--b{position:absolute;inset:0;object-position:72% 0%;opacity:0;animation:heroFade 14s ease-in-out infinite}
 @keyframes heroFade{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
-@media(max-width:799px){.hero__media--duo .hero__img--b{object-position:72% 20%}}
+@media(max-width:999px){.hero__media--duo .hero__img--b{object-position:72% 20%}}
 @media(prefers-reduced-motion:reduce){.hero__media--duo .hero__img--b{animation:none}}
