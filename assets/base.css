@@ -426,7 +426,7 @@ body.lb-open{overflow:hidden}
 @media(min-width:900px){
   .pgal{flex-direction:row-reverse;align-items:flex-start;gap:14px}
   .pgal__stage{flex:1;min-width:0}
-  .pgal__slide{aspect-ratio:4/5;max-height:calc(100vh - var(--header-h) - 56px)}
+  .pgal__slide{aspect-ratio:auto;height:min(calc(100vh - var(--header-h) - 56px),920px)}
   .pgal__thumbs{flex-direction:column;overflow-y:auto;overflow-x:hidden;max-height:calc(100vh - var(--header-h) - 56px);width:84px;flex:0 0 84px}
   .pgal__thumb{width:78px}
 }
